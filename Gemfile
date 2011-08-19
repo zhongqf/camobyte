@@ -39,3 +39,4 @@ gem "jquery-rails"
 gem "omniauth", "~> 0.2.0"
 gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 gem "settingslogic"
+gem 'rails-footnotes', '>= 3.7', :group => [:development, :test]

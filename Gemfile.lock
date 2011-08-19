@@ -151,6 +151,8 @@ GEM
       activesupport (= 3.0.8)
       bundler (~> 1.0)
       railties (= 3.0.8)
+    rails-footnotes (3.7.4)
+      rails (>= 3.0.0)
     railties (3.0.8)
       actionpack (= 3.0.8)
       activesupport (= 3.0.8)
@@ -210,6 +212,7 @@ DEPENDENCIES
   jquery-rails
   omniauth (~> 0.2.0)
   rails (= 3.0.8)
+  rails-footnotes (>= 3.7)
   rspec-rails (>= 2.0.1)
   settingslogic
   sqlite3
