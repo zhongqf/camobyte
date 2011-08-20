@@ -1,7 +1,10 @@
 Camobyte::Application.routes.draw do
+
   match '/auth/:provider/callback', :to => 'sessions#callback'
 
   devise_for :users
+  resources :users
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -53,6 +56,8 @@ Camobyte::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
+  
+  root :to => "users#show"
 
   # See how all your routes lay out with "rake routes"
 

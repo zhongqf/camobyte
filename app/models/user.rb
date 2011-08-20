@@ -6,4 +6,17 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  
+  
+  has_one :profile
+  accepts_nested_attributes_for :profile
+  
+  before_create :init_user
+  
+  
+  def init_user
+    self.profile ||= build_profile
+  end
+  
+  
 end
