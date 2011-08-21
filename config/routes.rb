@@ -57,7 +57,7 @@ Camobyte::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
   
-  root :to => "users#show"
+  root :to => "users#dashboard"
 
   # See how all your routes lay out with "rake routes"
 
