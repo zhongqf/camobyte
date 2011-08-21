@@ -1,6 +1,13 @@
+embed_assets: on
+
 javascripts:
   app:
     - public/javascripts/*.js
 stylesheets:
   app:
+    - public/stylesheets/blueprint/screen.css
     - public/stylesheets/*.css
+  print:
+    - public/stylesheets/blueprint/print.css
+  ie:
+    - public/stylesheets/blueprint/ie.css
