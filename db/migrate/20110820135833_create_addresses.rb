@@ -7,7 +7,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :state
       t.string :zip
       t.string :country
-      t.integer :account_type
+      t.integer :account_type, :default => 0
     end
   end
 

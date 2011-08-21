@@ -3,7 +3,7 @@ class CreatePhoneNumbers < ActiveRecord::Migration
     create_table :phone_numbers do |t|
       t.integer :profile_id
       t.string :value
-      t.integer :account_type
+      t.integer :account_type, :default => 0
     end
   end
 

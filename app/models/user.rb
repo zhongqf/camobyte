@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   
   
   def init_user
-    self.profile ||= build_profile
+    self.profile = Profile.find_or_create_by_email(self.email)
   end
   
   

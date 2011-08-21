@@ -10,7 +10,58 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110819150338) do
+ActiveRecord::Schema.define(:version => 20110820151235) do
+
+  create_table "addresses", :force => true do |t|
+    t.integer "profile_id"
+    t.string  "street"
+    t.string  "city"
+    t.string  "state"
+    t.string  "zip"
+    t.string  "country"
+    t.integer "account_type", :default => 0
+  end
+
+  create_table "email_addresses", :force => true do |t|
+    t.integer "profile_id"
+    t.string  "value"
+    t.integer "account_type", :default => 0
+  end
+
+  create_table "ims", :force => true do |t|
+    t.integer "profile_id"
+    t.string  "value"
+    t.integer "account_im_type", :default => 0
+    t.integer "account_type",    :default => 0
+  end
+
+  create_table "phone_numbers", :force => true do |t|
+    t.integer "profile_id"
+    t.string  "value"
+    t.integer "account_type", :default => 0
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.string   "email"
+    t.string   "login"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "common_name"
+    t.text     "biography"
+    t.string   "time_zone"
+    t.string   "locale"
+    t.string   "first_day_of_week"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "social_networks", :force => true do |t|
+    t.integer "profile_id"
+    t.string  "value"
+    t.integer "account_network_type", :default => 0
+    t.integer "account_type",         :default => 0
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -29,5 +80,11 @@ ActiveRecord::Schema.define(:version => 20110819150338) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "websites", :force => true do |t|
+    t.integer "profile_id"
+    t.string  "value"
+    t.integer "account_type", :default => 0
+  end
 
 end

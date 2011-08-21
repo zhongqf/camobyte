@@ -8,12 +8,14 @@ module Footnotes
       end
       
       def content
-        @users.map do |user|
+        links = [%(<a href="/users/sign_out" data-method="delete" ref="nofollow">Sign Out</a>)]
+        links += @users.map do |user|
           %(
             <a href="/users/sign_in?user[email]=#{user.email}&amp;user[password]=papapa" 
              data-method="post" rel="nofollow">#{link_text(user)}</a>
           )
-        end.join("<br/>")
+        end
+        links.flatten.join("<br/>")
       end
       
       protected

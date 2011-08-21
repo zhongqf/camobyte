@@ -3,8 +3,8 @@ class CreateIms < ActiveRecord::Migration
     create_table :ims do |t|
       t.integer :profile_id
       t.string :value
-      t.integer :account_im_type
-      t.integer :account_type
+      t.integer :account_im_type, :default => 0
+      t.integer :account_type, :default => 0
     end
   end
 
