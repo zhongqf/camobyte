@@ -10,7 +10,7 @@
 
 -------------------------------------------------------------- */
 
-a.button, button {
+a.button, button, input[type="submit"] {
   display:block;
   float:left;
   margin: 0.7em 0.5em 0.7em 0;
@@ -28,7 +28,20 @@ a.button, button {
   font-weight:bold;
   color:#565656;
   cursor:pointer;
+
+  color: #333;
+  text-shadow: 1px 1px 0 white;
+  white-space:nowrap;
+  overflow:visible;
+  cursor:pointer;
+  text-decoration:none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: -webkit-gradient(linear,left top,left bottom,from(#F4F4F4),to(#ECECEC));
+  background: -moz-linear-gradient(top,#F4F4F4,#ECECEC);*/
 }
+
 button {
   width:auto;
   overflow:visible;
@@ -55,11 +68,29 @@ button img, a.button img{
 -------------------------------------------------------------- */
 
 /* Standard */
-button:hover, a.button:hover{
+button:hover, a.button:hover, input[type="button"]:hover{
   background-color:#dff4ff;
-  border:1px solid #c2e1ef;
+  /*border:1px solid #c2e1ef;*/
   color:#336699;
+  
+  color:#fff;
+  text-decoration:none;
+  text-shadow:-1px -1px 0 rgba(0,0,0,0.3);
+  background: -webkit-gradient(linear,left top,left bottom,from(#6f9fe5),to(#5c8ad0));
+  background: -moz-linear-gradient(top,#6f9fe5,#5c8ad0);*/
+  /*border: 1px solid #5a85d0;*/
+  border: none;
+  
+  
+
 }
+
+/* Standard */
+button.mousedown, a.button.mousedown, input[type="button"].mousedown{
+  background: -webkit-gradient(linear,left top,left bottom,from(#5c8ad0),to(#6f9fe5));
+  background: -moz-linear-gradient(top,#5c8ad0,#6f9fe5);*/
+}
+
 a.button:active{
   background-color:#6299c5;
   border:1px solid #6299c5;

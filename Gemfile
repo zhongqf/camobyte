@@ -42,3 +42,4 @@ gem "settingslogic"
 gem 'rails-footnotes', '>= 3.7', :group => [:development, :test]
 gem 'show_for'
 gem 'simple_form'
+gem 'sass'

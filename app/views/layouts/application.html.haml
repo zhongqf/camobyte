@@ -7,30 +7,31 @@
     = include_stylesheets :print, :media => "print"
     /[lt IE 8]
       = include_stylesheets :ie
-    = include_javascripts :app
+    = include_javascripts :jquery, :app
     = csrf_meta_tag
   %body.page
     .header
       .wrapper.clearfix
         #userbox
-          .avatar.left
-            = link_to image_tag("avatar.png")
-          %span
-            = link_to "仲 秦锋", "#"
-          %ul
+          .avatar
+            = link_to image_tag("example_avatar.jpeg")
+          %ul.horizon
+            %li.login= link_to "仲 秦锋", "#"
             %li= link_to "个人主页"
             %li= link_to "通知"
             %li= link_to "设定"
             %li= link_to "退出"
         #logo
-          = link_to image_tag("logo.png")
+          = link_to image_tag("example_logo.jpg")
     .pagecontent
       .wrapper.clearfix
-        .left.sidebar
+        #sidebar.left
           #site_search
+            %button Save Me
+            %button Click Here
           .right-panel.no_title
             %ul
-              %li= link_to "我的内容"
+              %li.current= link_to "我的内容"
               %li= link_to "动态"
           .right-panel
             %h3.panel-title 工作空间
@@ -46,7 +47,7 @@
               %li= link_to "公司成员"
               %li= link_to "设备预约"
               %li= link_to "讨论"
-        .right.maincontent
+        #maincontent.last.left
           = yield
     .footer
       .wrapper.clearfix
