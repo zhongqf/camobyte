@@ -1,19 +1,16 @@
 embed_assets: on
 
 javascripts:
-  jquery:
-    - public/javascripts/jquery.js
-    - public/javascripts/jquery.min.js
-    - public/javascripts/jquery_ujs.js
   app:
+    - public/javascripts/jquery.js
+    - public/javascripts/jquery_ujs.js
+    - public/javascripts/jquery.buttonify.js
     - public/javascripts/application.js
   
 stylesheets:
   app:
     - public/stylesheets/blueprint/screen.css
-    - public/stylesheets/blueprint/plugins/buttons/screen.css
     - public/stylesheets/*.css
-    - public/stylesheets/*.sass
   print:
     - public/stylesheets/blueprint/print.css
   ie:

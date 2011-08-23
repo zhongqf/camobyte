@@ -7,7 +7,6 @@
     = include_stylesheets :print, :media => "print"
     /[lt IE 8]
       = include_stylesheets :ie
-    = include_javascripts :jquery, :app
     = csrf_meta_tag
   %body.page
     .header
@@ -27,8 +26,11 @@
       .wrapper.clearfix
         #sidebar.left
           #site_search
-            %button Save Me
-            %button Click Here
+            %button.green Hello
+            %br
+            %button.lightblue Where to go?
+            %br
+            = link_to "Where?", "/", :class=>"button green"
           .right-panel.no_title
             %ul
               %li.current= link_to "我的内容"
@@ -51,4 +53,5 @@
           = yield
     .footer
       .wrapper.clearfix
-      
+    = include_javascripts :app
+
