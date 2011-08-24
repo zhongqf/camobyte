@@ -1,6 +1,17 @@
+embed_assets: on
+
 javascripts:
   app:
-    - public/javascripts/*.js
+    - public/javascripts/jquery.js
+    - public/javascripts/jquery_ujs.js
+    - public/javascripts/jquery.buttonify.js
+    - public/javascripts/application.js
+  
 stylesheets:
   app:
+    - public/stylesheets/blueprint/screen.css
     - public/stylesheets/*.css
+  print:
+    - public/stylesheets/blueprint/print.css
+  ie:
+    - public/stylesheets/blueprint/ie.css

@@ -1,0 +1,123 @@
+
+
+button::-moz-focus-inner {
+  border: 0; 
+}
+
+// Requires Sass 3.1+
+@mixin linear-gradient($pos, $G1, $G2: false,
+                       $G3: false, $G4: false,
+                       $G5: false, $G6: false,
+                       $G7: false, $G8: false,
+                       $G9: false, $G10: false) {
+  // Detect what type of value exists in $pos
+  $pos-type: type-of(nth($pos, 1));
+
+  // If $pos is missing from mixin, reassign vars and add default position
+  @if $pos-type == color {
+    $G10: $G9; $G9: $G8; $G8: $G7; $G7: $G6; $G6: $G5;
+     $G5: $G4; $G4: $G3; $G3: $G2; $G2: $G1; $G1: $pos;
+    $pos: top; // Default position
+  }
+
+  $full: compact($G1, $G2, $G3, $G4, $G5, $G6, $G7, $G8, $G9, $G10);
+
+  background-color: nth($G1, 1);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($G1), to($G2)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient($pos, $full);
+  background-image:    -moz-linear-gradient($pos, $full);
+  background-image:     -ms-linear-gradient($pos, $full);
+  background-image:      -o-linear-gradient($pos, $full);
+  background-image:         linear-gradient($pos, $full);
+}
+
+@mixin border-radius ($radii) {
+  -webkit-border-radius: $radii;
+     -moz-border-radius: $radii;
+      -ms-border-radius: $radii;
+       -o-border-radius: $radii;
+          border-radius: $radii;
+}
+
+@mixin box-shadow($shadow1, $shadow2 : false) {
+  -webkit-box-shadow: $shadow1, $shadow2;
+  -moz-box-shadow: $shadow1, $shadow2;
+  -ms-box-shadow: $shadow1, $shadow2;
+  -o-box-shadow: $shadow1, $shadow2;
+  box-shadow: $shadow1, $shadow2;
+}
+
+@mixin css3button($background_color, $font_color, $font_shadow_color) {
+  $from_color: $background_color;
+  $to_color: $background_color * 0.8;
+  $border_color: $to_color;
+  $border_bottom_color: $border_color * 0.9;
+  $box_shadow_color: $from_color * 1.15;
+  
+  @include linear-gradient($from_color, $to_color);
+  @include border-radius(3px);
+  @include box-shadow(inset 0 1px 0 0 $box_shadow_color);
+  
+  
+  color: $font_color;
+  font: bold 11px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  line-height: 1;
+  padding: 8px 16px;
+  text-align: center;
+  text-shadow: 0 1px 0 $font_shadow_color;
+  display: inline-block;
+  border: 1px solid $border_color;
+  border-bottom: 1px solid $border_bottom_color;
+  
+  
+  $hover_from_color: $from_color * 0.95;
+  $hover_to_color: $hover_from_color * 0.8;
+  $hover_box_shadow_color: $box_shadow_color * 0.85;
+  $hover_font_shadow_color: $font_shadow_color * 0.9;
+  $hover_border_color: $border_color * 0.95;
+  $hover_border_bottom_color: $hover_border_color * 0.9;
+  
+  &:hover {
+  
+    @include linear-gradient($hover_from_color, $hover_to_color);
+    @include box-shadow(inset 0 1px 0 0 $hover_box_shadow_color);
+
+    border: 1px solid $hover_border_color;
+    border-bottom: 1px solid $hover_border_bottom_color;
+    cursor: pointer;
+    text-shadow: 0 1px 0 $hover_font_shadow_color;
+  }
+
+  $active_shadow_color: $hover_to_color * 0.9;
+  $active_border_color: $border_color * 0.8;
+  $active_border_bottom_color: $active_border_color * 0.9;
+  
+  &:active {
+  
+    border: 1px solid $active_border_color;
+    border-bottom: 1px solid $active_border_bottom_color;
+    
+    @include box-shadow(inset 0 0 8px 4px $active_shadow_color, 0 1px 0 0 #eeeeee);
+  }
+  
+}
+
+button, a.button {
+  @include css3button(#eeeeee, #333, #eee);
+}
+
+button.red, a.button.red {
+  @include css3button(#e16575, #fff, #602c18);
+}
+
+button.green, a.button.green {
+  @include css3button(#7fbf4d, #fff, #4c9021);
+}
+
+button.lightblue, a.button.lightblue {
+  @include css3button(#d7e5f5, #1a3e66, #fff);
+}
+
+button.blue, a.button.blue {
+  @include css3button(#779be9, #fff, #2c1860);
+}

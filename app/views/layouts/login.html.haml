@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %meta{:charset=>"UTF-8"}
+    %title= Camobyte
+    = include_stylesheets :app, :media => "screen"
+    = include_stylesheets :print, :media => "print"
+    /[lt IE 8]
+      = include_stylesheets :ie
+    = csrf_meta_tag
+  %body.page
+    .loginpage
+      #loginform
+        = yield
+    = include_javascripts :app
+

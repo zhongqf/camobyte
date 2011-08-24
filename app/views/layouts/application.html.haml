@@ -1,0 +1,52 @@
+!!!
+%html
+  %head
+    %meta{:charset=>"UTF-8"}
+    %title= Camobyte
+    = include_stylesheets :app, :media => "screen"
+    = include_stylesheets :print, :media => "print"
+    /[lt IE 8]
+      = include_stylesheets :ie
+    = csrf_meta_tag
+  %body.page
+    .header
+      .wrapper.clearfix
+        #userbox
+          .avatar
+            = link_to image_tag("example_avatar.jpeg")
+          %ul.horizon
+            %li.login= link_to "仲 秦锋", "#"
+            %li= link_to "个人主页"
+            %li= link_to "通知"
+            %li= link_to "设定"
+            %li= link_to "退出"
+        #logo
+          = link_to image_tag("example_logo.jpg")
+    .pagecontent
+      .wrapper.clearfix
+        #sidebar.left
+          #site_search
+          .right-panel.no_title
+            %ul
+              %li.current= link_to "我的内容"
+              %li= link_to "动态"
+          .right-panel
+            %h4.panel-title 工作空间
+            %ul
+              %li= link_to "第二开发事业部"
+              %li= link_to "第二开发事业部第一开发部"
+              %li= link_to "マスタメンテ"
+              %li= link_to "権限申請"
+              %li= link_to "职场情报安全推进组"
+          .right-panel
+            %h4.panel-title 公司
+            %ul
+              %li= link_to "公司成员"
+              %li= link_to "设备预约"
+              %li= link_to "讨论"
+        #maincontent.last.left
+          = yield
+    .footer
+      .wrapper.clearfix
+    = include_javascripts :app
+

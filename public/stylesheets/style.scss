@@ -1,0 +1,161 @@
+// Requires Sass 3.1+
+@mixin linear-gradient($pos, $G1, $G2: false,
+                       $G3: false, $G4: false,
+                       $G5: false, $G6: false,
+                       $G7: false, $G8: false,
+                       $G9: false, $G10: false) {
+  // Detect what type of value exists in $pos
+  $pos-type: type-of(nth($pos, 1));
+
+  // If $pos is missing from mixin, reassign vars and add default position
+  @if $pos-type == color {
+    $G10: $G9; $G9: $G8; $G8: $G7; $G7: $G6; $G6: $G5;
+     $G5: $G4; $G4: $G3; $G3: $G2; $G2: $G1; $G1: $pos;
+    $pos: top; // Default position
+  }
+
+  $full: compact($G1, $G2, $G3, $G4, $G5, $G6, $G7, $G8, $G9, $G10);
+
+  background-color: nth($G1, 1);
+  background-image: -webkit-gradient(linear, left top, left bottom, from($G1), to($G2)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient($pos, $full);
+  background-image:    -moz-linear-gradient($pos, $full);
+  background-image:     -ms-linear-gradient($pos, $full);
+  background-image:      -o-linear-gradient($pos, $full);
+  background-image:         linear-gradient($pos, $full);
+}
+
+@mixin border-radius ($radii) {
+  -webkit-border-radius: $radii;
+     -moz-border-radius: $radii;
+      -ms-border-radius: $radii;
+       -o-border-radius: $radii;
+          border-radius: $radii;
+}
+
+
+a {
+  text-decoration: none;
+}
+input[type=text], input[type=password], input[type=url], input[type=email], input.text, input.title, textarea, select {
+  padding: 5px;
+}
+
+ul.horizon {
+  list-style: none;
+  li {
+    float: left;
+  }
+}
+
+.loginpage {
+  background-color: #eee;
+  padding: 30px 0;
+  min-height: 500px;
+}
+#loginform {
+  width: 300px;
+  margin: 0 auto;
+  border: 8px solid #ccc;
+  padding: 20px;
+  @include border-radius(10px);
+  background-color: #fff;
+  
+  h2 {
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+.wrapper {
+  width: 950px;
+  margin: 0 auto;
+}
+
+.header {
+  height: 50px;
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #ddd;
+  
+  @include linear-gradient(#fcfcfc, #eee);
+  
+}
+
+.pagecontent {
+  margin-top: 20px;
+}
+
+#userbox {
+  float:left;
+  padding-top: 5px;
+
+  .avatar{ float: left; }
+  ul {
+    float: left;
+    font-size: 12px;
+    maring: 0;
+    padding: 0;
+    padding-top:11px;
+    li {
+      display: inline-block;
+      a {
+        padding: 5px 10px;
+        color: #666;
+        &:hover {
+          color: #999;
+        }
+      }
+      &.login {
+        a {
+          padding-left:15px;
+          border-right: 1px solid #ddd;
+        }
+      }
+    }
+  }
+}
+
+#logo {
+  float: right;
+  padding: 3px;
+}
+
+#sidebar {
+  width: 199px;
+  border-right: 1px solid #f3f3f3;
+  
+  .right-panel {
+    h4 {
+      color: #999;
+    }
+    ul {
+      list-style: none;
+      margin-right: 0;
+      padding-left: 10px;
+      li {
+        display: inline-block;
+        position: relative;
+        width: 184px;
+        padding-left: 5px;
+        a {
+          display: block;
+          padding: 5px 0;
+          color: #333;
+        }
+        &.current {
+          background-color: #C7DCEE;
+          &:hover {
+            background-color: #C7DCEE;
+          }
+        }
+        &:hover {
+          background-color: #eeeeff;
+        }
+      }
+    }
+  }
+}
+
+#maincontent {
+  width: 720px;
+  margin-left: 30px;
+}
