@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   
   has_one :profile
   accepts_nested_attributes_for :profile
+  attr_accessible :profile_attributes
   
   before_create :init_user
   

@@ -1,0 +1,3 @@
+= f.fields_for :profile, f.object.profile do |sf|
+  - for field in fields
+    = render 'profiles/field', :f => sf, :field => field
