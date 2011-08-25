@@ -13,6 +13,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if params.has_key?(:sub_action)
+      @sub_action = params[:sub_action]
+    else
+      render :file => "#{Rails.root}/public/404.html", :status => 404
+    end
   end
 
   def create

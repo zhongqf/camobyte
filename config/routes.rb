@@ -4,6 +4,14 @@ Camobyte::Application.routes.draw do
 
   devise_for :users
   resources :users
+  
+  match '/account/settings' => 'users#edit', :as => :account_settings, :sub_action => 'settings'
+  match '/account/picture' => 'users#edit', :as => :account_picture, :sub_action => 'picture'
+  match '/account/profile' => 'users#edit', :as => :account_profile, :sub_action => 'profile'
+  match '/account/linked_accounts' => 'users#edit', :as => :account_linked_accounts, :sub_action => 'linked_accounts'
+  match '/account/notifications' => 'users#edit', :as => :account_notifications, :sub_action => 'notifications'
+  match '/account/delete' => 'users#edit', :as => :account_delete, :sub_action => 'delete'
+  
 
 
   # The priority is based upon order of creation:
