@@ -42,6 +42,7 @@ gem "settingslogic"
 gem 'rails-footnotes', '>= 3.7', :group => [:development, :test]
 gem 'show_for'
 gem 'simple_form'
+gem 'sass'
 gem 'cancan', '~> 1.4.1'
 gem 'paperclip', '~> 2.3.6'
 gem "will_paginate", :git=>"git://github.com/mislav/will_paginate.git", :branch=>"rails3"
