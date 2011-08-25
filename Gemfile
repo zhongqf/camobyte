@@ -45,5 +45,4 @@ gem 'simple_form'
 gem 'cancan', '~> 1.4.1'
 gem 'paperclip', '~> 2.3.6'
 gem "will_paginate", :git=>"git://github.com/mislav/will_paginate.git", :branch=>"rails3"
-gem "tabnav"
 
