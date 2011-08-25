@@ -1,0 +1,104 @@
+a {
+  text-decoration: none; }
+
+input[type=text], input[type=password], input[type=url], input[type=email], input.text, input.title, textarea, select {
+  padding: 5px; }
+
+ul.horizon {
+  list-style: none; }
+  ul.horizon li {
+    float: left; }
+
+.loginpage {
+  background-color: #eee;
+  padding: 30px 0;
+  min-height: 500px; }
+
+#loginform {
+  width: 300px;
+  margin: 0 auto;
+  border: 8px solid #ccc;
+  padding: 20px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  background-color: #fff; }
+  #loginform h2 {
+    border-bottom: 1px solid #ccc; }
+
+.wrapper {
+  width: 950px;
+  margin: 0 auto; }
+
+.header {
+  height: 50px;
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #ddd;
+  background-color: #fcfcfc;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fcfcfc), to(#eeeeee));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, compact(#fcfcfc, #eeeeee, false, false, false, false, false, false, false, false));
+  background-image: -moz-linear-gradient(top, compact(#fcfcfc, #eeeeee, false, false, false, false, false, false, false, false));
+  background-image: -ms-linear-gradient(top, compact(#fcfcfc, #eeeeee, false, false, false, false, false, false, false, false));
+  background-image: -o-linear-gradient(top, compact(#fcfcfc, #eeeeee, false, false, false, false, false, false, false, false));
+  background-image: linear-gradient(top, compact(#fcfcfc, #eeeeee, false, false, false, false, false, false, false, false)); }
+
+.pagecontent {
+  margin-top: 20px; }
+
+#userbox {
+  float: left;
+  padding-top: 5px; }
+  #userbox .avatar {
+    float: left; }
+  #userbox ul {
+    float: left;
+    font-size: 12px;
+    maring: 0;
+    padding: 0;
+    padding-top: 11px; }
+    #userbox ul li {
+      display: inline-block; }
+      #userbox ul li a {
+        padding: 5px 10px;
+        color: #666; }
+        #userbox ul li a:hover {
+          color: #999; }
+      #userbox ul li.login a {
+        padding-left: 15px;
+        border-right: 1px solid #ddd; }
+
+#logo {
+  float: right;
+  padding: 3px; }
+
+#sidebar {
+  width: 199px;
+  border-right: 1px solid #f3f3f3; }
+  #sidebar .right-panel h4 {
+    color: #999; }
+  #sidebar .right-panel ul {
+    list-style: none;
+    margin-right: 0;
+    padding-left: 10px; }
+    #sidebar .right-panel ul li {
+      display: inline-block;
+      position: relative;
+      width: 184px;
+      padding-left: 5px; }
+      #sidebar .right-panel ul li a {
+        display: block;
+        padding: 5px 0;
+        color: #333; }
+      #sidebar .right-panel ul li.current {
+        background-color: #C7DCEE; }
+        #sidebar .right-panel ul li.current:hover {
+          background-color: #C7DCEE; }
+      #sidebar .right-panel ul li:hover {
+        background-color: #eeeeff; }
+
+#maincontent {
+  width: 720px;
+  margin-left: 30px; }
