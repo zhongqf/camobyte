@@ -3,10 +3,10 @@
   %head
     %meta{:charset=>"UTF-8"}
     %title= Camobyte
-    = include_stylesheets :app, :media => "screen"
-    = include_stylesheets :print, :media => "print"
+    = stylesheet_link_tag "application", :media => "screen"
+    = stylesheet_link_tag "print", :media => "print"
     /[lt IE 8]
-      = include_stylesheets :ie
+      = stylesheet_link_tag "ie"
     = csrf_meta_tag
   %body.page
     .header
@@ -48,5 +48,5 @@
           = yield
     .footer
       .wrapper.clearfix
-    = include_javascripts :app
+    = javascript_include_tag "application"
 

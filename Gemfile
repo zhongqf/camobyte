@@ -38,7 +38,7 @@ gem "cucumber-rails", :group => [:development, :test]
 gem "devise"
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
-gem "jammit"
+#gem "jammit"
 gem "jquery-rails"
 gem "omniauth", "~> 0.2.0"
 gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
