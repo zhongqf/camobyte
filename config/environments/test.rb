@@ -6,6 +6,10 @@ Camobyte::Application.configure do
   # your test database is "scratch space" for the test suite and is wiped
   # and recreated between test runs.  Don't rely on the data there!
   config.cache_classes = true
+  
+  # for Rails 3.1
+  config.serve_static_assets = true
+  config.static_cache_control = "public, max-age=3600"
 
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true

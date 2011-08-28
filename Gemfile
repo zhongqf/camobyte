@@ -1,6 +1,10 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.8'
+gem 'rails', '3.1.0.rc6'
+
+# For rails 3.1
+gem 'coffee-script'
+gem 'uglifier'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
