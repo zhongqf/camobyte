@@ -7,7 +7,9 @@ class Profile < ActiveRecord::Base
   has_many :websites, :dependent => :destroy
   has_many :ims, :dependent => :destroy
   has_many :social_networks, :dependent => :destroy
-
+  
+  concerned_with  :avatar
+  
   with_options :allow_destroy => true, :reject_if => proc { |a| a['value'].blank? } do |profile|
     profile.accepts_nested_attributes_for :phone_numbers
     profile.accepts_nested_attributes_for :email_addresses

@@ -13,7 +13,7 @@
       .wrapper.clearfix
         #userbox
           .avatar
-            = link_to image_tag("example_avatar.jpeg")
+            = link_to image_tag(current_user.profile.avatar_url(:thumb))
           %ul.horizon
             %li.login= link_to current_user.email, current_user
             %li= link_to t("usermenu.dashboard")
