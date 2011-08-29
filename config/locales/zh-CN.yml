@@ -5,3 +5,9 @@
     notifications: "通知"
     settings: "设定"
     logout: "退出"
+
+  shared:
+    user_navigation:
+      profile_information: "个人资料"
+      profile_picture: "头像"
+      account_settings: "账户设定"
