@@ -19,7 +19,7 @@
             %li= link_to t("usermenu.dashboard")
             %li= link_to t("usermenu.notifications")
             %li= link_to t("usermenu.settings"), account_profile_path
-            %li= link_to t("usermenu.logout")
+            %li= link_to t("usermenu.logout"), destroy_user_session_path, :method => :delete
         #logo
           = link_to image_tag("example_logo.jpg")
     .pagecontent
@@ -45,6 +45,9 @@
               %li= link_to "设备预约"
               %li= link_to "讨论"
         #maincontent.last.left
+          - flash.each do |name, msg|
+            = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+
           = yield
     .footer
       .wrapper.clearfix

@@ -1,0 +1,7 @@
+"zh-CN":
+  hello: Hello
+  usermenu:
+    dashboard: "我的首页"
+    notifications: "通知"
+    settings: "设定"
+    logout: "退出"
