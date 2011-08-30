@@ -1,6 +1,7 @@
-= render 'shared/user_navigation'
 
-%h2= t(".title_#{@sub_action}")
+%h2= t(".profile_settings")
+
+= render 'shared/user_navigation'
 
 - secure_post = @sub_action == 'settings' && Teambox.config.secure_logins
 - secure_url = secure_post ? polymorphic_url(current_user, :protocol => 'https') : nil

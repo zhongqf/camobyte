@@ -1,4 +1,5 @@
 @import "compass/css3";
+@import "compass/utilities";
 
 .translation_missing {
   background-color: #ffaacc;
@@ -70,8 +71,10 @@ ul.horizon {
       a {
         padding: 5px 10px;
         color: #666;
+        @include single-text-shadow(rgba(#fff, 0.7), 1px, 1px, 0);
+
         &:hover {
-          color: #999;
+          color: #333;
         }
       }
       &.login {
@@ -133,8 +136,42 @@ ul.horizon {
 .hswitch {
   ul {
     list-style: none;
+    maring: 0;
+    padding: 10px;
+    @include linear-gradient(#ddd, #eee);
+
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ccc;
+
     li {
-      float: left;
+      display: inline;
+      margin: 0;
+      padding: 0 5px;
+      a {
+        padding: 5px 10px;
+        color: #666;
+        @include border-radius(4px);
+
+        @include single-text-shadow(rgba(#fff, 0.7), 1px, 1px, 0);
+
+        &.active {
+          background-color: #f7f7f7;
+          color: #000;
+          border: 1px solid #ccc;
+          border-right: 1px solid #eee;
+          border-bottom: 1px solid #eee;
+
+          &:hover {
+            color: #000;
+            background-color: #f7f7f7;
+          }
+
+        }
+        &:hover {
+          color: #333;
+          background-color: #ccc;
+        }
+      }
     }
   }
 }

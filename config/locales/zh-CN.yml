@@ -11,3 +11,24 @@
       profile_information: "个人资料"
       profile_picture: "头像"
       account_settings: "账户设定"
+
+
+  users:
+    edit:
+      profile_settings: "设定"
+
+  profiles:
+    profile:
+      phone_numbers: 电话号码
+      email_addresses: 电子邮箱
+      ims: IM信息
+      social_networks: 社交网站账号
+      websites: 网站
+      addresses: 联络地址
+    field:
+      add_phone_numbers: 添加电话号码
+      add_email_addresses: 添加电子邮箱
+      add_ims: 添加IM账号
+      add_social_networks: 添加社交网站账号
+      add_websites: 添加网站
+      add_addresses: 添加联络地址
