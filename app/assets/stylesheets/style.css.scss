@@ -53,6 +53,10 @@ ul.horizon {
 
 .pagecontent {
   margin-top: 20px;
+
+  .wrapper {
+    background: url('/assets/side_rule.gif') 200px 0 repeat-y;
+  }
 }
 
 #userbox {
@@ -94,7 +98,7 @@ ul.horizon {
 
 #sidebar {
   width: 199px;
-  border-right: 1px solid #f3f3f3;
+  padding-top: 10px;
   
   .right-panel {
     h4 {
@@ -115,7 +119,12 @@ ul.horizon {
           color: #333;
         }
         &.current {
-          background-color: #C7DCEE;
+          //background-color: #C7DCEE;
+          @include linear-gradient(#eee, #fcfcfc);
+  
+          border: 1px solid #ddd;
+          border-right: none;
+          @include border-left-radius(4px);
           &:hover {
             background-color: #C7DCEE;
           }
