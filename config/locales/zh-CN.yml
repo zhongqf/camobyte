@@ -16,6 +16,9 @@
   users:
     edit:
       profile_settings: "设定"
+    form:
+      settings:
+        change_password: 修改登录密码
 
   profiles:
     profile:

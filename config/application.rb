@@ -7,6 +7,10 @@ require 'rails/all'
 Bundler.require(:default, :assets, Rails.env) if defined?(Bundler)
 
 module Camobyte
+  def self.config
+    Rails.configuration
+  end
+
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -42,9 +46,13 @@ module Camobyte
     
     # For rails 3.1
     config.assets.enabled = true
+
+    def config.from_file(file)
+      super
+    end
+
+    config.from_file 'application.yml'
   end
+
+  Object.const_set(:APP_CONFIG, config)
 end
-
-require 'env_yaml'
-
-require 'settings'

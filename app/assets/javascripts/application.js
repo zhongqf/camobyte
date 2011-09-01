@@ -13,3 +13,20 @@ $(document).ready(function()
 {
   $.buttonify();
 });
+
+$("#change_password_link a").click(function(){
+	$("#change_password_link").hide();
+	$("#password_fields").show();
+	$("#user_password").focus();
+});
+
+$(".add_nested_item").click(function(){
+
+});
+
+ /* ".add_nested_item:click": function(e){
+    link = $(this);
+    template = eval(link.href.replace(/.*#/, ''))
+    $(link.rel).insert({ bottom: replace_ids(template) });
+    Event.addBehavior.reload();
+  },*/

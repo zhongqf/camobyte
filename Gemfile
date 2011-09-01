@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc6'
+gem 'rails', '3.1.0'
 
 # For rails 3.1
 gem 'coffee-script'
@@ -35,14 +35,15 @@ gem 'sqlite3'
 # end
 gem "capybara", :group => [:development, :test]
 gem "cucumber-rails", :group => [:development, :test]
-gem "devise"
+gem "devise","~> 1.4.3"
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
 #gem "jammit"
 gem "jquery-rails"
+gem 'choices', :git => "git://github.com/teambox/choices.git"
 gem "omniauth", "~> 0.2.0"
 gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
-gem "settingslogic"
+#gem "settingslogic"
 gem 'rails-footnotes', '>= 3.7', :group => [:development, :test]
 gem 'show_for'
 gem 'simple_form'
@@ -51,4 +52,4 @@ gem 'cancan', '~> 1.4.1'
 gem 'paperclip', '~> 2.3.6'
 gem "will_paginate", :git=>"git://github.com/mislav/will_paginate.git", :branch=>"rails3"
 gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
-gem 'sass-rails', "~> 3.1.0.rc"
+gem 'sass-rails', "~> 3.1.0"

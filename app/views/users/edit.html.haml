@@ -3,12 +3,14 @@
 
 = render 'shared/user_navigation'
 
-- secure_post = @sub_action == 'settings' && Teambox.config.secure_logins
+- secure_post = @sub_action == 'settings' && Camobyte.config.secure_logins
 - secure_url = secure_post ? polymorphic_url(current_user, :protocol => 'https') : nil
 
 = simple_form_for current_user, :url => secure_url, :html => {:multipart => true } do |form|
   = render "users/form/#{@sub_action}", :f => form, :sub_action => @sub_action, :user => form.object
   = hidden_field_tag 'sub_action', @sub_action
+
+  = form.button :submit
 
 / = form_for current_user, :url => secure_url, :html => { :multipart => true } do |form|
 /  /= form.error_messages
