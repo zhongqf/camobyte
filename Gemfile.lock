@@ -22,6 +22,13 @@ GIT
     choices (0.2.4)
       hashie (>= 0.4.0)
 
+GIT
+  remote: git://github.com/zhongqf/rails-footnotes.git
+  revision: 065a47a29b290b3e476222218568a0fd144efa63
+  specs:
+    rails-footnotes (3.7.5.rc1)
+      rails (>= 3.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -190,8 +197,6 @@ GEM
       activesupport (= 3.1.0)
       bundler (~> 1.0)
       railties (= 3.1.0)
-    rails-footnotes (3.7.4)
-      rails (>= 3.0.0)
     railties (3.1.0)
       actionpack (= 3.1.0)
       activesupport (= 3.1.0)
@@ -238,7 +243,7 @@ GEM
     sprockets (2.0.0)
       hike (~> 1.2)
       rack (~> 1.0)
-      tilt (~> 1.1, != 1.3.0)
+      tilt (!= 1.3.0, ~> 1.1)
     spruz (0.2.13)
     sqlite3 (1.3.4)
     term-ansicolor (1.0.6)
@@ -273,7 +278,7 @@ DEPENDENCIES
   omniauth (~> 0.2.0)
   paperclip (~> 2.3.6)
   rails (= 3.1.0)
-  rails-footnotes (>= 3.7)
+  rails-footnotes!
   rspec-rails (>= 2.0.1)
   sass
   sass-rails (~> 3.1.0)

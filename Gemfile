@@ -44,7 +44,7 @@ gem 'choices', :git => "git://github.com/teambox/choices.git"
 gem "omniauth", "~> 0.2.0"
 gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 #gem "settingslogic"
-gem 'rails-footnotes', '>= 3.7', :group => [:development, :test]
+gem 'rails-footnotes', :git => "git://github.com/zhongqf/rails-footnotes.git", :group => [:development, :test]
 gem 'show_for'
 gem 'simple_form'
 gem 'sass'
