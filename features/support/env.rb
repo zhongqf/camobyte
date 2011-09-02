@@ -3,7 +3,6 @@
 # newer version of cucumber-rails. Consider adding your own code to a new file 
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
-
 require 'cucumber/rails'
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
