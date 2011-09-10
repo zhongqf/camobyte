@@ -1,0 +1,19 @@
+<%  
+render_tabnav :topbar_usermenu_dropdown, :html => { :class => "dropdown-menu"} do 
+    add_tab do |t|
+      t.named t("profile")
+      t.links_to user_path(current_user)
+    end
+    
+    add_tab do |t|
+      t.named t("settings")
+      t.links_to account_profile_path
+    end
+
+    add_tab do |t|
+      t.named t("logout")
+      t.links_to destroy_user_session_path, :method => :delete
+    end
+
+end
+%>

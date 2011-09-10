@@ -3,53 +3,41 @@
   %head
     %meta{:charset=>"UTF-8"}
     %title= Camobyte
-    = stylesheet_link_tag "application", :media => "screen"
-    = stylesheet_link_tag "print", :media => "print"
-    /[lt IE 8]
-      = stylesheet_link_tag "ie"
+    = stylesheet_link_tag "/stylesheets/bootstrap/bootstrap.less", :rel => "stylesheet/less"
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "less-1.1.3.min.js"
     = csrf_meta_tag
-  %body.page
-    .header
-      .wrapper.clearfix
-        #userbox
-          .avatar
-            = link_to image_tag(current_user.profile.avatar_url(:thumb))
-          %ul.horizon
-            %li.login= link_to current_user.email, current_user
-            %li= link_to t("usermenu.dashboard")
-            %li= link_to t("usermenu.notifications")
-            %li= link_to t("usermenu.settings"), account_profile_path
-            %li= link_to t("usermenu.logout"), destroy_user_session_path, :method => :delete
-        #logo
-          = link_to image_tag("example_logo.jpg")
-    .pagecontent
-      .wrapper.clearfix
-        #sidebar.left
-          #site_search
-          .right-panel.no_title
-            %ul
-              %li.current= link_to "我的内容"
-              %li= link_to "动态"
-          .right-panel
-            %h4.panel-title 工作空间
-            %ul
-              %li= link_to "第二开发事业部"
-              %li= link_to "第二开发事业部第一开发部"
-              %li= link_to "マスタメンテ"
-              %li= link_to "権限申請"
-              %li= link_to "职场情报安全推进组"
-          .right-panel
-            %h4.panel-title 公司
-            %ul
-              %li= link_to "公司成员"
-              %li= link_to "设备预约"
-              %li= link_to "讨论"
-        #maincontent.last.left
-          - flash.each do |name, msg|
-            = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+  %body
+    .topbar
+      .topbar-inner
+        .container
+          - if current_user
+            = render :partial => "shared/topbar"
+            #logo= link_to image_tag("example_logo.jpg")
+          - else
+            %div{:style=>"height: 40px;"}
+    
+    #pagecontent
+      .container
+        .row
 
-          = yield
+          - left = @page_columns && @page_columns[:left]
+          - right = @page_columns && @page_columns[:right]
+          - main_width = 16 - (left.nil? ? 0 : left[:width]) - (right.nil? ? 0 : right[:width])
+          
+          - if left
+            %div{:class=>"span#{left[:width]} columns"}
+              = yield left[:as]
+          
+          %div{:class=>"span#{main_width} columns"}
+            = yield
+            
+          - if right
+            %div{:class=>"span#{right[:width]} columns"}
+              = yield right[:as]
+
     .footer
-      .wrapper.clearfix
+      .container
+    
     = javascript_include_tag "application"
 

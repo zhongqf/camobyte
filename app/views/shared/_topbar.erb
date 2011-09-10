@@ -1,0 +1,37 @@
+<%  
+render_tabnav :topbar_nav, :html => { :class => "nav"} do 
+  
+    add_tab :html => {:class=>"dropdown usermenu"}  do |t|
+      t.named current_user.email
+      t.set_before_link image_tag(current_user.profile.avatar_url(:micro), :class=>"avatar")
+      t.set_after_link render_to_string(:partial => "shared/topbar_usermenu")
+      t.links_to user_path(current_user), :class => "avatar dropdown-toggle"
+    end
+    
+    add_tab do |t|
+      t.named t("dashboard")
+      t.links_to "#"
+    end
+    
+    add_tab :html => {:class=>"dropdown"} do |t|
+      t.named t("workspaces")
+      t.set_after_link render_to_string(:partial => "shared/topbar_workspaces")
+      t.links_to "#", :class => "dropdown-toggle"
+    end
+    
+    add_tab :html => {:class=>"dropdown"}  do |t|
+      t.named t("groups")
+      t.set_after_link render_to_string(:partial => "shared/topbar_groups")
+      t.links_to "#", :class => "dropdown-toggle"
+    end
+    
+    add_tab :html => {:class=>"dropdown"}  do |t|
+      t.named t("company")
+      t.set_after_link render_to_string(:partial => "shared/topbar_company")
+      t.links_to "#", :class => "dropdown-toggle"
+    end
+    
+end
+
+
+%>

@@ -1,0 +1,19 @@
+<%  
+render_tabnav :topbar_workspaces_dropdown, :html => { :class => "dropdown-menu"} do 
+    add_tab do |t|
+      t.named t("workspace1")
+      t.links_to "#"
+    end
+
+    add_tab do |t|
+      t.named t("workspace2")
+      t.links_to "#"
+    end
+
+    add_tab do |t|
+      t.named t("workspace3")
+      t.links_to "#"
+    end
+
+end
+%>

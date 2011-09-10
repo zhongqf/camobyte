@@ -22,9 +22,9 @@ module TabnavHelper
     @_binding = proc.binding
 
     instance_eval(&proc) 
-    out tag('div',@_tabnav.html ,true)
+    out tag('ul',@_tabnav.html ,true)
       render_tabnav_tabs 
-    out "</div>"
+    out "</ul>"
     nil
   end 
 
@@ -43,7 +43,7 @@ module TabnavHelper
   private
 
   def render_tabnav_tabs
-    out tag('ul', {} , true)
+    #out tag('ul', {} , true)
 
     @_tabnav.tabs.each do |tab|
 
@@ -55,39 +55,46 @@ module TabnavHelper
         tab.html[:class] += ' active'
       end
 
-      li_options = {} 
+      #link_options = {} 
       
-      if tab.html[:id]
-        li_options[:id] = tab.html[:id] + '_container'
-      end
+      #if tab.html[:id]
+      #  li_options[:id] = tab.html[:id] + '_container'
+      #end
       
-      if tab.html[:li_class]      
-        li_options[:class] = tab.html[:li_class] 
-      end
-      tab.html.delete(:li_class)
+      #if tab.html[:link_class]      
+      #  link_options[:class] = tab.html[:link_class] 
+      #end
+      #tab.html.delete(:link_class)
         
-      if tab.html[:li_end]
-        tag_end = tab.html[:li_end]
+      if tab.html[:ending]
+        tag_end = tab.html[:ending]
       end
-      tab.html.delete(:li_end)
+      tab.html.delete(:ending)
 
-      li_tab(tab,li_options,tag_end)
+      #li_tab(tab,link_options,tag_end)
+      li_tab(tab, tag_end)
     end 
-    out '</ul>'
+    #out '</ul>'
   end  
 
-  def li_tab(tab,li_options,tag_end)
-    out tag('li', li_options, true)
+  #def li_tab(tab,link_options,tag_end)
+  def li_tab(tab, tag_end)
+    out tag('li',  tab.html, true)
+    
+    out tab.before_link unless tab.no_before?
 
     if tab.disabled? || (tab.link.empty?)
-      out content_tag('span', tab.name, tab.html) 
+      out content_tag('span', tab.name, tab.link_options) 
     elsif !tab.link.empty?
-      out link_to(tab.name, tab.link, tab.html)
+      out link_to(tab.name, tab.link, tab.link_options)
     else
       raise "Ground Control to Major Tom..."
     end 
-
-    out "#{tag_end} </li>"
+    
+    out tab.after_link unless tab.no_after?
+    
+    out "</li>"
+    out "#{tag_end}"
   end
 
   def out(string)

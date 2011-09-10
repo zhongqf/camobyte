@@ -1,0 +1,27 @@
+<%  
+render_tabnav :topbar_groups_dropdown, :html => { :class => "dropdown-menu"} do 
+    add_tab do |t|
+      t.named t("group1")
+      t.links_to "#"
+    end
+
+    add_tab do |t|
+      t.named t("group2")
+      t.links_to "#"
+    end
+
+    add_tab do |t|
+      t.named t("group3")
+      t.links_to "#"
+    end
+    add_tab do |t|
+      t.named t("group4")
+      t.links_to "#"
+    end
+    add_tab do |t|
+      t.named t("group5")
+      t.links_to "#"
+    end
+
+end
+%>

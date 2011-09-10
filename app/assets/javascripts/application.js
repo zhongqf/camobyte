@@ -11,7 +11,7 @@
 
 $(document).ready(function()
 {
-  $.buttonify();
+  //$.buttonify();
 });
 
 $("#change_password_link a").click(function(){
@@ -30,3 +30,11 @@ $(".add_nested_item").click(function(){
     $(link.rel).insert({ bottom: replace_ids(template) });
     Event.addBehavior.reload();
   },*/
+
+  $("body").bind("click", function (e) {
+     $('.dropdown-toggle, .menu').parent("li").removeClass("open");
+   });
+   $(".dropdown-toggle, .menu").click(function (e) {
+     var $li = $(this).parent("li").toggleClass('open');
+     return false;
+   });

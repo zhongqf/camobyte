@@ -1,6 +1,6 @@
 
 <%  
-render_tabnav :user_profile_nav, :html => { :class => "hswitch"} do 
+render_tabnav :user_profile_nav, :html => { :class => "tabs"} do 
     add_tab do |t|
       t.named t('.profile_information')
       t.links_to account_profile_path

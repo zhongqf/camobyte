@@ -46,7 +46,7 @@ gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 #gem "settingslogic"
 gem 'rails-footnotes', :git => "git://github.com/zhongqf/rails-footnotes.git", :group => [:development, :test]
 gem 'show_for'
-gem 'simple_form'
+gem 'simple_form', :git => "git://github.com/plataformatec/simple_form.git"
 gem 'sass'
 gem 'cancan', '~> 1.4.1'
 gem 'paperclip', '~> 2.3.6'

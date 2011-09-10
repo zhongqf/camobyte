@@ -1,5 +1,18 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  def define_page_columns(defines = "")
+    # "sidebar:4||actionbar:3"
+    
+    regex = /^(\s*([\w|_|-]+)\s*:\s*(\d+)\s*\|)?\s*(\|\s*([\w|_|-]+)\s*:\s*(\d+)\s*)?$/
+    matches = defines.match(regex)
+    raise "Invalid colunms define." unless matches
+    
+    @page_columns = {}
+    @page_columns[:left] = {:width => matches[3].to_i, :as => matches[2].to_sym} if matches[1]
+    @page_columns[:right] = {:width => matches[6].to_i, :as => matches[5].to_sym} if matches[4]
+
+  end
+    
 ##  
 ##  def content_for(*args)
 ##    super unless args.first.to_sym == :column and mobile?

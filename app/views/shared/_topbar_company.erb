@@ -1,0 +1,23 @@
+<%  
+render_tabnav :topbar_company_dropdown, :html => { :class => "dropdown-menu"} do 
+    add_tab do |t|
+      t.named t("company_link_a")
+      t.links_to "#"
+    end
+
+    add_tab do |t|
+      t.named t("company_link_b")
+      t.links_to "#"
+    end
+
+    add_tab do |t|
+      t.named t("company_link_c")
+      t.links_to "#"
+    end
+    add_tab do |t|
+      t.named t("company_link_d")
+      t.links_to "#"
+    end
+
+end
+%>
