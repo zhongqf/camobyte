@@ -33,8 +33,6 @@ gem 'sqlite3'
 # group :development, :test do
 #   gem 'webrat'
 # end
-gem "capybara", :group => [:development, :test]
-gem "cucumber-rails", :group => [:development, :test]
 gem "devise","~> 1.4.3"
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
@@ -42,9 +40,6 @@ gem "haml-rails"
 gem "jquery-rails"
 gem 'choices', :git => "git://github.com/teambox/choices.git"
 gem "omniauth", "~> 0.2.0"
-gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
-#gem "settingslogic"
-gem 'rails-footnotes', :git => "git://github.com/zhongqf/rails-footnotes.git", :group => [:development, :test]
 gem 'show_for'
 gem 'simple_form', :git => "git://github.com/plataformatec/simple_form.git"
 gem 'sass'
@@ -53,3 +48,22 @@ gem 'paperclip', '~> 2.3.6'
 gem "will_paginate", :git=>"git://github.com/mislav/will_paginate.git", :branch=>"rails3"
 gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
 gem 'sass-rails', "~> 3.1.0"
+
+group :test, :development do 
+  gem 'rails-footnotes', :git => "git://github.com/zhongqf/rails-footnotes.git"
+  gem "capybara"
+  gem "cucumber"
+  gem "cucumber-rails"
+  gem "rspec"
+  gem "rspec-rails"
+  gem "factory_girl"
+  gem 'database_cleaner'
+  gem 'fuubar'
+  gem 'timecop'
+  gem 'faker'
+  gem 'rcov'
+  gem 'pickle'
+  gem 'launchy'
+end
+
+

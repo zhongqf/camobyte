@@ -7,6 +7,7 @@
     = stylesheet_link_tag "application"
     = javascript_include_tag "less-1.1.3.min.js"
     = csrf_meta_tag
+
   %body
     .topbar
       .topbar-inner
@@ -35,6 +36,7 @@
           - if right
             %div{:class=>"span#{right[:width]} columns"}
               = yield right[:as]
+
 
     .footer
       .container
