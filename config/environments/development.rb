@@ -25,5 +25,13 @@ Camobyte::Application.configure do
   
   # For Rails 3.1
   config.assets.compress = false
+
+  silence_warnings do
+    begin
+      require 'pry'
+      IRB = Pry
+    rescue LoadError
+    end
+  end
 end
 

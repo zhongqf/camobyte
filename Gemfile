@@ -64,6 +64,15 @@ group :test, :development do
   gem 'rcov'
   gem 'pickle'
   gem 'launchy'
+  gem 'spork', '~> 0.9.0.rc'
+  gem 'pry'
+  gem 'guard-spork'
+  gem "guard-bundler"
+  gem "guard-rspec"
+  gem "guard-cucumber"
+  gem "guard-migrate"
+  gem 'rb-fsevent'
+  gem 'growl_notify'
 end
 
 
