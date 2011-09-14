@@ -52,11 +52,11 @@ gem 'sass-rails', "~> 3.1.0"
 group :test, :development do 
   gem 'rails-footnotes', :git => "git://github.com/zhongqf/rails-footnotes.git"
   gem "capybara"
-  gem "cucumber"
+
   gem "cucumber-rails"
-  gem "rspec"
-  gem "rspec-rails"
-  gem "factory_girl"
+  gem "rspec-rails", "~> 2.6.1"
+  gem "factory_girl_rails", "~> 1.2.0"
+  
   gem 'database_cleaner'
   gem 'fuubar'
   gem 'timecop'
@@ -66,6 +66,7 @@ group :test, :development do
   gem 'launchy'
   gem 'spork', '~> 0.9.0.rc'
   gem 'pry'
+
   gem 'guard-spork'
   gem "guard-bundler"
   gem "guard-rspec"
@@ -73,6 +74,7 @@ group :test, :development do
   gem "guard-migrate"
   gem 'rb-fsevent'
   gem 'growl_notify'
+  #gem 'growl'
 end
 
 

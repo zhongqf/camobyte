@@ -2,16 +2,21 @@ require 'spec_helper'
 
 describe UsersController do
 
+  before(:each) do
+    @user = Factory(:user)
+    sign_in @user
+  end
+
   describe "GET 'index'" do
     it "should be successful" do
-      get 'index'
+      get :index
       response.should be_success
     end
   end
 
   describe "GET 'show'" do
     it "should be successful" do
-      get 'show'
+      get 'show', :id => @user.id
       response.should be_success
     end
   end
@@ -25,30 +30,10 @@ describe UsersController do
 
   describe "GET 'edit'" do
     it "should be successful" do
-      get 'edit'
+      get 'edit', :sub_action => "profile"
       response.should be_success
     end
   end
 
-  describe "GET 'create'" do
-    it "should be successful" do
-      get 'create'
-      response.should be_success
-    end
-  end
-
-  describe "GET 'update'" do
-    it "should be successful" do
-      get 'update'
-      response.should be_success
-    end
-  end
-
-  describe "GET 'destroy'" do
-    it "should be successful" do
-      get 'destroy'
-      response.should be_success
-    end
-  end
 
 end
