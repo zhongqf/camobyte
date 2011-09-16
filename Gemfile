@@ -35,7 +35,6 @@ gem 'sqlite3'
 # end
 gem "devise","~> 1.4.3"
 gem "haml", ">= 3.0.0"
-gem "haml-rails"
 #gem "jammit"
 gem "jquery-rails"
 gem 'choices', :git => "git://github.com/teambox/choices.git"
@@ -49,9 +48,15 @@ gem "will_paginate", :git=>"git://github.com/mislav/will_paginate.git", :branch=
 gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
 gem 'sass-rails', "~> 3.1.0"
 
-group :test, :development do 
+group :development do
   gem 'rails-footnotes', :git => "git://github.com/zhongqf/rails-footnotes.git"
+  gem "haml-rails"
+  gem "rails3-generators"
+end
+
+group :test, :development do 
   gem "capybara"
+  gem 'pry'
 
   gem "cucumber-rails"
   gem "rspec-rails", "~> 2.6.1"
@@ -65,7 +70,6 @@ group :test, :development do
   gem 'pickle'
   gem 'launchy'
   gem 'spork', '~> 0.9.0.rc'
-  gem 'pry'
   gem 'shoulda-matchers', '~> 1.0.0.beta3'
 
   gem 'guard-spork'
