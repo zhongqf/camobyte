@@ -66,6 +66,7 @@ group :test, :development do
   gem 'launchy'
   gem 'spork', '~> 0.9.0.rc'
   gem 'pry'
+  gem 'shoulda-matchers', '~> 1.0.0.beta3'
 
   gem 'guard-spork'
   gem "guard-bundler"
