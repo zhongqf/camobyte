@@ -1,0 +1,12 @@
+h2
+  span.email= @user.email
+
+= show_for @profile do |p|
+  = p.attribute :login
+  = p.attribute :first_name
+  = p.attribute :last_name
+  = p.attribute :common_name
+  = p.attribute :biography
+  
+  = render_profile(@profile)
+

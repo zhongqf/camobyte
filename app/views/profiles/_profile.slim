@@ -1,0 +1,50 @@
+.profile
+  - unless profile.phone_numbers.empty?
+    .phone_numbers
+      h3= t('.phone_numbers')
+      -for phone_number in profile.phone_numbers
+        .phone.item
+          span.type= phone_number.get_type
+          =h phone_number.value
+  - unless profile.email_addresses.empty?
+    .email_addresses
+      h3= t('.email_addresses')
+      -for email_address in profile.email_addresses
+        .email_address.item
+          span.type= email_address.get_type
+          =h email_address.value
+  - unless profile.websites.empty?
+    .websites
+      h3= t('.websites')
+      -for website in profile.websites
+        .website.item
+          span.type= website.get_type
+          =link_to h(website.to_url), website.to_url, :target => '_blank'
+  - unless profile.addresses.empty?
+    .addresses
+      h3= t('.addresses')
+      -for address in profile.addresses
+        .address.item
+          span.type= address.get_type
+          =h address.street
+          br/
+          =h "#{address.city} #{address.state}, #{address.zip}"
+          br/
+          = t("countries.#{address.country}") unless address.country.blank?
+  - unless profile.ims.empty?
+    .ims
+      h3= t('.ims')
+      -for im in profile.ims
+        .im.item
+          span.type="#{im.get_type} - # im.get_im_type
+          =h im.value
+  - unless profile.social_networks.empty?
+    .social_networks
+      h3= t('.social_networks')
+      -for social_network in profile.social_networks
+        .social_network.item
+          span.type= "#{social_network.get_network_type} - # social_network.get_type
+          - if social_network.to_url
+            = link_to h(social_network.value), social_network.to_url, :target => '_blank'
+          - else
+            =h social_network.value

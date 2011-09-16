@@ -34,7 +34,9 @@ gem 'sqlite3'
 #   gem 'webrat'
 # end
 gem "devise","~> 1.4.3"
-gem "haml", ">= 3.0.0"
+gem "slim", "~> 1.0.2"
+gem "haml", "~> 3.1.3"
+
 #gem "jammit"
 gem "jquery-rails"
 gem 'choices', :git => "git://github.com/teambox/choices.git"
@@ -51,7 +53,8 @@ gem 'sass-rails', "~> 3.1.0"
 group :development do
   gem 'rails-footnotes', :git => "git://github.com/zhongqf/rails-footnotes.git"
   gem "haml-rails"
-  gem "rails3-generators"
+  gem "slim-rails", "~> 0.2.1"
+  gem "rails3-generators", :git => "git://github.com/zhongqf/rails3-generators.git"
 end
 
 group :test, :development do 

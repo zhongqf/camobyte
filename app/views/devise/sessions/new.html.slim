@@ -1,0 +1,27 @@
+- define_page_columns "info:10|"
+
+  
+
+h2= t(".sign_in")
+
+
+= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html =>{:class => "form-stacked"} ) do |f|
+  - flash.each do |name, msg|
+    = content_tag :div, msg, :class => "alert-message #{name}" if msg.is_a?(String)
+
+  = f.input :email, :autofocus => true
+  = f.input :password
+  = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+  = f.button :submit, t(".sign_in"), :class=>"btn primary"
+
+= render :partial => "devise/shared/links"
+
+
+- content_for :info do
+  h1 Sample Company
+  p
+    | This is an example company site. You can log in with your email and password in the right panel.
+    br
+    | The default password is
+    strong papapa
+
