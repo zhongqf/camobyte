@@ -27,15 +27,15 @@ html
           - main_width = 16 - (left.nil? ? 0 : left[:width]) - (right.nil? ? 0 : right[:width])
           
           - if left
-            div{:class=>"span# left[:width]} columns"
-              = yield left[:as]
+            div{class="span#{left[:width]} columns"}
+              == yield left[:as]
           
-          div{:class=>"span# main_width} columns"
-            = yield
+          div{class="span#{main_width} columns"}
+            == yield
             
           - if right
-            div{:class=>"span# right[:width]} columns"
-              = yield right[:as]
+            div{class="span#{right[:width]} columns"}
+              == yield right[:as]
 
 
     .footer

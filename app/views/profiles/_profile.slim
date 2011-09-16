@@ -36,14 +36,14 @@
       h3= t('.ims')
       -for im in profile.ims
         .im.item
-          span.type="#{im.get_type} - # im.get_im_type
+          span.type="#{im.get_type} - #{im.get_im_type}"
           =h im.value
   - unless profile.social_networks.empty?
     .social_networks
       h3= t('.social_networks')
       -for social_network in profile.social_networks
         .social_network.item
-          span.type= "#{social_network.get_network_type} - # social_network.get_type
+          span.type= "#{social_network.get_network_type} - #{social_network.get_type}"
           - if social_network.to_url
             = link_to h(social_network.value), social_network.to_url, :target => '_blank'
           - else
