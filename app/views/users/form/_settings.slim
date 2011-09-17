@@ -1,0 +1,13 @@
+= f.input :email
+
+#password_fields style='display: none'
+  = f.input :old_password, :autocomplete => 'off'
+  = f.input :password, :autocomplete => 'off'
+  = f.input :password_confirmation, :autocomplete => 'off'
+#change_password_link
+  = link_to t('.change_password'), "#"
+
+= f.simple_fields_for :profile do |p|
+  = p.input :locale, :collection => locale_select_values, :include_blank => false
+  = p.input :time_zone
+  = p.input :first_day_of_week, :collection => first_day_of_work_values, :include_blank => false

@@ -37,6 +37,13 @@ GIT
     rails-footnotes (3.7.5.rc1)
       rails (>= 3.0.0)
 
+GIT
+  remote: git://github.com/zhongqf/rails3-generators.git
+  revision: 2a27766e354f7c4be5c1afce7eabcc5a6705ec0b
+  specs:
+    rails3-generators (0.17.4)
+      railties (>= 3.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -169,6 +176,7 @@ GEM
     multi_json (1.0.3)
     multi_xml (0.2.2)
     multipart-post (1.1.3)
+    mysql2 (0.3.7)
     net-ldap (0.2.2)
     nokogiri (1.4.7)
     oa-basic (0.2.6)
@@ -244,8 +252,6 @@ GEM
       activesupport (= 3.1.0)
       bundler (~> 1.0)
       railties (= 3.1.0)
-    rails3-generators (0.17.4)
-      railties (>= 3.0.0)
     railties (3.1.0)
       actionpack (= 3.1.0)
       activesupport (= 3.1.0)
@@ -295,6 +301,11 @@ GEM
     sexp_processor (3.0.6)
     shoulda-matchers (1.0.0.beta3)
     show_for (0.2.4)
+    slim (1.0.2)
+      temple (~> 0.3.3)
+      tilt (~> 1.3.2)
+    slim-rails (0.2.1)
+      slim (>= 0.9.2)
     slop (2.1.0)
     spork (0.9.0.rc9)
     sprockets (2.0.0)
@@ -302,7 +313,7 @@ GEM
       rack (~> 1.0)
       tilt (!= 1.3.0, ~> 1.1)
     spruz (0.2.13)
-    sqlite3 (1.3.4)
+    temple (0.3.4)
     term-ansicolor (1.0.6)
     thor (0.14.6)
     tilt (1.3.3)
@@ -340,17 +351,18 @@ DEPENDENCIES
   guard-migrate
   guard-rspec
   guard-spork
-  haml (>= 3.0.0)
+  haml (~> 3.1.3)
   haml-rails
   jquery-rails
   launchy
+  mysql2
   omniauth (~> 0.2.0)
   paperclip (~> 2.3.6)
   pickle
   pry
   rails (= 3.1.0)
   rails-footnotes!
-  rails3-generators
+  rails3-generators!
   rb-fsevent
   rcov
   rspec-rails (~> 2.6.1)
@@ -359,8 +371,9 @@ DEPENDENCIES
   shoulda-matchers (~> 1.0.0.beta3)
   show_for
   simple_form!
+  slim (~> 1.0.2)
+  slim-rails (~> 0.2.1)
   spork (~> 0.9.0.rc)
-  sqlite3
   timecop
   uglifier
   will_paginate!

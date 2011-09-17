@@ -1,0 +1,45 @@
+doctype html
+html
+  head
+    meta charset="UTF-8"
+    title= Camobyte
+    = stylesheet_link_tag "/stylesheets/bootstrap/bootstrap.less", :rel => "stylesheet/less"
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "less-1.1.3.min.js"
+    = csrf_meta_tag
+
+  body
+    .topbar
+      .topbar-inner
+        .container
+          - if current_user
+            = render :partial => "shared/topbar"
+            #logo= link_to image_tag("example_logo.jpg")
+          - else
+            div style="height: 40px;"
+    
+    #pagecontent
+      .container
+        .row
+
+          - left = @page_columns && @page_columns[:left]
+          - right = @page_columns && @page_columns[:right]
+          - main_width = 16 - (left.nil? ? 0 : left[:width]) - (right.nil? ? 0 : right[:width])
+          
+          - if left
+            div{class="span#{left[:width]} columns"}
+              == yield left[:as]
+          
+          div{class="span#{main_width} columns"}
+            == yield
+            
+          - if right
+            div{class="span#{right[:width]} columns"}
+              == yield right[:as]
+
+
+    .footer
+      .container
+    
+    = javascript_include_tag "application"
+
