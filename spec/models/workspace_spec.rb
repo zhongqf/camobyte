@@ -23,6 +23,20 @@ describe Workspace do
   #it { should ensure_length_of(:permalink).is_at_least(6).is_at_most(20) }
 
   describe "create a workspace" do
+    before do
+      @owner = Factory(:user)
+      @other = Factory(:user)
+      @workspace = Factory(:workspace, :owner_id => @owner.id)
+    end
+
+    it "should belong to its owner" do
+      @workspace.owner.should == @owner
+      @workspace.owner?(@owner).should be_true
+      @workspace.owner?(@other).should be_false
+      @workspace.users.should include(@owner)
+      @owner.reload
+      @owner.workspaces.should include(@workspace)
+    end
   end
 
   describe "invite members" do

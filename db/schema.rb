@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110828140335) do
+ActiveRecord::Schema.define(:version => 20110917134325) do
+
+  create_table "activities", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "target_id"
+    t.string   "target_type"
+    t.integer  "user_group_id"
+    t.string   "user_group_type"
+    t.integer  "comment_target_id"
+    t.string   "comment_target_type"
+    t.string   "action"
+    t.boolean  "deleted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "addresses", :force => true do |t|
     t.integer "profile_id"
@@ -21,6 +35,64 @@ ActiveRecord::Schema.define(:version => 20110828140335) do
     t.string  "zip"
     t.string  "country"
     t.integer "account_type", :default => 0
+  end
+
+  create_table "circles", :force => true do |t|
+    t.integer  "company_id"
+    t.integer  "owner_id"
+    t.string   "name"
+    t.string   "permalink"
+    t.integer  "last_comment_id"
+    t.integer  "comments_count"
+    t.string   "watchers_ids"
+    t.integer  "conversations_count"
+    t.integer  "last_conversation_id"
+    t.boolean  "public"
+    t.boolean  "deleted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "target_id"
+    t.string   "target_type"
+    t.integer  "user_id"
+    t.text     "body"
+    t.text     "body_html"
+    t.integer  "status"
+    t.boolean  "deleted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.string   "permalink"
+    t.string   "domain"
+    t.text     "description"
+    t.string   "language"
+    t.string   "time_zone"
+    t.text     "settings"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.boolean  "deleted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "conversations", :force => true do |t|
+    t.integer  "user_group_id"
+    t.string   "user_group_type"
+    t.integer  "user_id"
+    t.string   "title"
+    t.integer  "last_comment_id"
+    t.integer  "comments_count"
+    t.string   "watchers_ids"
+    t.boolean  "simple"
+    t.boolean  "deleted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "email_addresses", :force => true do |t|
@@ -34,6 +106,48 @@ ActiveRecord::Schema.define(:version => 20110828140335) do
     t.string  "value"
     t.integer "account_im_type", :default => 0
     t.integer "account_type",    :default => 0
+  end
+
+  create_table "invitations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "target_id"
+    t.string   "target_type"
+    t.integer  "role"
+    t.string   "email"
+    t.integer  "invited_user_id"
+    t.string   "token"
+    t.boolean  "deleted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "members", :force => true do |t|
+    t.integer  "user_group_id"
+    t.string   "user_group_type"
+    t.integer  "user_id"
+    t.integer  "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "organizations", :force => true do |t|
+    t.integer  "company_id"
+    t.string   "name"
+    t.string   "permalink"
+    t.text     "description"
+    t.string   "domain"
+    t.text     "settings"
+    t.boolean  "deleted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "people", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "organization_id"
+    t.integer  "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "phone_numbers", :force => true do |t|
@@ -68,6 +182,46 @@ ActiveRecord::Schema.define(:version => 20110828140335) do
     t.integer "account_type",         :default => 0
   end
 
+  create_table "task_lists", :force => true do |t|
+    t.integer  "workspace_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "position"
+    t.integer  "last_comment_id"
+    t.integer  "comments_count"
+    t.string   "watchers_ids"
+    t.boolean  "archived"
+    t.integer  "archived_tasks_count"
+    t.integer  "tasks_count"
+    t.datetime "completed_at"
+    t.date     "start_on"
+    t.date     "finish_on"
+    t.boolean  "deleted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.integer  "workspace_id"
+    t.integer  "user_id"
+    t.integer  "task_list_id"
+    t.integer  "parent_id"
+    t.string   "name"
+    t.integer  "position"
+    t.integer  "comments_count"
+    t.integer  "last_comment_id"
+    t.string   "watchers_ids"
+    t.integer  "status"
+    t.date     "due_on"
+    t.datetime "completed_at"
+    t.boolean  "deleted"
+    t.integer  "subtasks_count"
+    t.integer  "last_subtask_id"
+    t.string   "assignee_ids"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
@@ -90,6 +244,27 @@ ActiveRecord::Schema.define(:version => 20110828140335) do
     t.integer "profile_id"
     t.string  "value"
     t.integer "account_type", :default => 0
+  end
+
+  create_table "workspaces", :force => true do |t|
+    t.integer  "organization_id"
+    t.integer  "owner_id"
+    t.string   "name"
+    t.string   "permalink"
+    t.integer  "last_comment_id"
+    t.integer  "comments_count"
+    t.integer  "members_count"
+    t.integer  "subscribers_count"
+    t.integer  "tasks_count"
+    t.integer  "task_lists_count"
+    t.integer  "conversations_count"
+    t.integer  "last_conversation_id"
+    t.boolean  "track_time"
+    t.boolean  "archived"
+    t.boolean  "public"
+    t.boolean  "deleted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
