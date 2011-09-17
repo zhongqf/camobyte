@@ -7,14 +7,14 @@ class CreateTasks < ActiveRecord::Migration
       t.integer :parent_id
       t.string :name
       t.integer :position
-      t.integer :comments_count
+      t.integer :comments_count, :default => 0
       t.integer :last_comment_id
       t.string :watchers_ids
       t.integer :status
       t.date :due_on
       t.datetime :completed_at
-      t.boolean :deleted
-      t.integer :subtasks_count
+      t.boolean :deleted, :default => false, :null => false
+      t.integer :subtasks_count, :default => 0
       t.integer :last_subtask_id
       t.string :assignee_ids
 

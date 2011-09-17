@@ -7,7 +7,7 @@ class CreateComments < ActiveRecord::Migration
       t.text :body
       t.text :body_html
       t.integer :status
-      t.boolean :deleted
+      t.boolean :deleted, :default => false, :null => false
 
       t.timestamps
     end

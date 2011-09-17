@@ -7,7 +7,7 @@ class CreateOrganizations < ActiveRecord::Migration
       t.text :description
       t.string :domain
       t.text :settings
-      t.boolean :deleted
+      t.boolean :deleted,             :default => false, :null => false
 
       t.timestamps
     end

@@ -6,10 +6,10 @@ class CreateConversations < ActiveRecord::Migration
       t.integer :user_id
       t.string :title
       t.integer :last_comment_id
-      t.integer :comments_count
+      t.integer :comments_count, :default => 0
       t.string :watchers_ids
-      t.boolean :simple
-      t.boolean :deleted
+      t.boolean :simple, :default => false
+      t.boolean :deleted, :default => false, :null => false
 
       t.timestamps
     end

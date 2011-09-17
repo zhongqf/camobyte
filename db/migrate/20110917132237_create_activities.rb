@@ -9,7 +9,7 @@ class CreateActivities < ActiveRecord::Migration
       t.integer :comment_target_id
       t.string :comment_target_type
       t.string :action
-      t.boolean :deleted
+      t.boolean :deleted, :default => false, :null => false
 
       t.timestamps
     end

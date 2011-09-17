@@ -8,7 +8,7 @@ class CreateInvitations < ActiveRecord::Migration
       t.string :email
       t.integer :invited_user_id
       t.string :token
-      t.boolean :deleted
+      t.boolean :deleted, :default => false, :null => false
 
       t.timestamps
     end

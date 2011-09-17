@@ -6,12 +6,12 @@ class CreateCircles < ActiveRecord::Migration
       t.string :name
       t.string :permalink
       t.integer :last_comment_id
-      t.integer :comments_count
+      t.integer :comments_count, :default => 0
       t.string :watchers_ids
-      t.integer :conversations_count
+      t.integer :conversations_count, :default => 0
       t.integer :last_conversation_id
       t.boolean :public
-      t.boolean :deleted
+      t.boolean :deleted, :default => false, :null => false
 
       t.timestamps
     end
