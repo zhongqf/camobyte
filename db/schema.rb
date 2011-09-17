@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20110917134325) do
     t.integer  "comment_target_id"
     t.string   "comment_target_type"
     t.string   "action"
-    t.boolean  "deleted"
+    t.boolean  "deleted",             :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -43,12 +43,12 @@ ActiveRecord::Schema.define(:version => 20110917134325) do
     t.string   "name"
     t.string   "permalink"
     t.integer  "last_comment_id"
-    t.integer  "comments_count"
+    t.integer  "comments_count",       :default => 0
     t.string   "watchers_ids"
-    t.integer  "conversations_count"
+    t.integer  "conversations_count",  :default => 0
     t.integer  "last_conversation_id"
     t.boolean  "public"
-    t.boolean  "deleted"
+    t.boolean  "deleted",              :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(:version => 20110917134325) do
     t.text     "body"
     t.text     "body_html"
     t.integer  "status"
-    t.boolean  "deleted"
+    t.boolean  "deleted",     :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70,13 +70,13 @@ ActiveRecord::Schema.define(:version => 20110917134325) do
     t.string   "permalink"
     t.string   "domain"
     t.text     "description"
-    t.string   "language"
-    t.string   "time_zone"
+    t.string   "language",          :default => "en"
+    t.string   "time_zone",         :default => "Eastern Time (US & Canada)"
     t.text     "settings"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
-    t.boolean  "deleted"
+    t.boolean  "deleted",           :default => false,                        :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -87,10 +87,10 @@ ActiveRecord::Schema.define(:version => 20110917134325) do
     t.integer  "user_id"
     t.string   "title"
     t.integer  "last_comment_id"
-    t.integer  "comments_count"
+    t.integer  "comments_count",  :default => 0
     t.string   "watchers_ids"
-    t.boolean  "simple"
-    t.boolean  "deleted"
+    t.boolean  "simple",          :default => false
+    t.boolean  "deleted",         :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(:version => 20110917134325) do
     t.string   "email"
     t.integer  "invited_user_id"
     t.string   "token"
-    t.boolean  "deleted"
+    t.boolean  "deleted",         :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -137,7 +137,7 @@ ActiveRecord::Schema.define(:version => 20110917134325) do
     t.text     "description"
     t.string   "domain"
     t.text     "settings"
-    t.boolean  "deleted"
+    t.boolean  "deleted",     :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -188,15 +188,15 @@ ActiveRecord::Schema.define(:version => 20110917134325) do
     t.string   "name"
     t.integer  "position"
     t.integer  "last_comment_id"
-    t.integer  "comments_count"
+    t.integer  "comments_count",       :default => 0
     t.string   "watchers_ids"
-    t.boolean  "archived"
-    t.integer  "archived_tasks_count"
-    t.integer  "tasks_count"
+    t.boolean  "archived",             :default => false
+    t.integer  "archived_tasks_count", :default => 0
+    t.integer  "tasks_count",          :default => 0
     t.datetime "completed_at"
     t.date     "start_on"
     t.date     "finish_on"
-    t.boolean  "deleted"
+    t.boolean  "deleted",              :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -208,14 +208,14 @@ ActiveRecord::Schema.define(:version => 20110917134325) do
     t.integer  "parent_id"
     t.string   "name"
     t.integer  "position"
-    t.integer  "comments_count"
+    t.integer  "comments_count",  :default => 0
     t.integer  "last_comment_id"
     t.string   "watchers_ids"
     t.integer  "status"
     t.date     "due_on"
     t.datetime "completed_at"
-    t.boolean  "deleted"
-    t.integer  "subtasks_count"
+    t.boolean  "deleted",         :default => false, :null => false
+    t.integer  "subtasks_count",  :default => 0
     t.integer  "last_subtask_id"
     t.string   "assignee_ids"
     t.datetime "created_at"
@@ -252,17 +252,17 @@ ActiveRecord::Schema.define(:version => 20110917134325) do
     t.string   "name"
     t.string   "permalink"
     t.integer  "last_comment_id"
-    t.integer  "comments_count"
-    t.integer  "members_count"
-    t.integer  "subscribers_count"
-    t.integer  "tasks_count"
-    t.integer  "task_lists_count"
-    t.integer  "conversations_count"
+    t.integer  "comments_count",       :default => 0
+    t.integer  "members_count",        :default => 0
+    t.string   "watchers_ids"
+    t.integer  "tasks_count",          :default => 0
+    t.integer  "task_lists_count",     :default => 0
+    t.integer  "conversations_count",  :default => 0
     t.integer  "last_conversation_id"
-    t.boolean  "track_time"
-    t.boolean  "archived"
+    t.boolean  "track_time",           :default => false
+    t.boolean  "archived",             :default => false
     t.boolean  "public"
-    t.boolean  "deleted"
+    t.boolean  "deleted",              :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
