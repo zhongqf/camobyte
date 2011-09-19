@@ -1,27 +1,20 @@
 require 'factory_girl'
 
-Factory.sequence :email do |n|
-  "mail_#{n}@sample_email.com"
-end
+FactoryGirl.define do
+  
+  sequence :email do |n| 
+    "mail_#{n}@sample_email.com"
+  end
 
-Factory.sequence :name do |n|
-  "Sample Name ##{n}"
-end
+  sequence :name  do |n|
+    "Sample Name ##{n}"
+  end
 
-Factory.sequence :permalink do |n|
-  "sample_name_#{n}"
+  sequence :permalink do |n|
+    "sample_permalink_#{n}"
+  end
+  
 end
-
-Factory.define :user do |u|
-  u.email { Factory.next(:email)}
-  u.password "papapa"
-  u.password_confirmation "papapa"
-end
-
-Factory.define :zhongqf, :parent => :user do |u|
-  u.email "zhongqf@gmail.com"
-end
-
 
 ## Factory.sequence :login do |n|
 ##   "gandhi_#{n}"
