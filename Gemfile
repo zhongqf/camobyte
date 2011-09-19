@@ -56,6 +56,7 @@ group :development do
   gem "haml-rails"
   gem "slim-rails", "~> 0.2.1"
   gem "rails3-generators", :git => "git://github.com/zhongqf/rails3-generators.git"
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 end
 
 group :test, :development do 

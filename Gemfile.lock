@@ -9,6 +9,12 @@ GIT
       sass (~> 3.1)
 
 GIT
+  remote: git://github.com/ctran/annotate_models.git
+  revision: cfeec96c9ca0fa5035b10be3d73e798cc4fc52f7
+  specs:
+    annotate (2.4.1.beta1)
+
+GIT
   remote: git://github.com/mislav/will_paginate.git
   revision: a2648e77294806e0e46395e0d3076adf9bee00a0
   branch: rails3
@@ -334,6 +340,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate!
   cancan (~> 1.4.1)
   capybara
   choices!
