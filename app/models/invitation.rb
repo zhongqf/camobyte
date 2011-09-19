@@ -1,4 +1,5 @@
 class Invitation < ActiveRecord::Base
+  include Immortal
 end
 # == Schema Information
 #

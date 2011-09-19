@@ -51,11 +51,11 @@ describe Workspace do
     end
 
     it "should fail if name or permalink was used" do
-      FactoryGirl.create(:workspace, :name => @workspace.name).should be_invalid
-      FactoryGirl.create(:workspace, :permalink => @workspace.permalink).shoudl be_invalid
+      FactoryGirl.build(:workspace, :name => @workspace.name).should be_invalid
+      FactoryGirl.build(:workspace, :permalink => @workspace.permalink).should be_invalid
       
-      workspace = FactoryGirl.create(:workspace)
-      worksapce.name = @workspace.name
+      workspace = FactoryGirl.build(:workspace)
+      workspace.name = @workspace.name
       workspace.should be_invalid
       workspace.name = FactoryGirl.generate(:name)
       workspace.permalink = @workspace.permalink

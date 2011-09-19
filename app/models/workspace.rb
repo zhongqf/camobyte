@@ -1,4 +1,6 @@
 class Workspace < ActiveRecord::Base
+  include Immortal
+
   # associations
   belongs_to :owner, :class_name => "User"
   belongs_to :organization
@@ -39,9 +41,14 @@ class Workspace < ActiveRecord::Base
     self.owner && self.owner == user
   end
 
-  def add_user(user)
-    unless has_member?(user) 
-
+  def add_user(user, params = {})
+    unless has_member?(user)
+      member = self.members.with_deleted.where(:user_id => user.id).first
+      member ||= members.build(:user => user, :deleted => false)
+      member.role = params[:role] if params[:role]
+      member.source_user_id = params[:source_user].try(:id)
+      member.save
+      member
     end
   end
 
@@ -49,10 +56,14 @@ class Workspace < ActiveRecord::Base
     user && members.exists?(:user_id => user.id)
   end
 
+  def log_activities(target, action, user = nil)
+
+  end
+
   protected
     def add_owner_and_log_create
       add_user(owner, :role => :owner )
-      log_activities(self, 'create', user_id)
+      log_activities(self, 'create', owner_id)
     end
 
 end

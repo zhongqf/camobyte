@@ -13,5 +13,6 @@ end
 #  role            :integer(4)
 #  created_at      :datetime
 #  updated_at      :datetime
+#  deleted         :boolean(1)      default(FALSE), not null
 #
 

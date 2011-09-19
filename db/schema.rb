@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110919055622) do
+ActiveRecord::Schema.define(:version => 20110919073344) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -130,6 +130,8 @@ ActiveRecord::Schema.define(:version => 20110919055622) do
     t.integer  "role"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "deleted",         :default => false, :null => false
+    t.integer  "source_user_id"
   end
 
   create_table "organizations", :force => true do |t|
@@ -150,6 +152,7 @@ ActiveRecord::Schema.define(:version => 20110919055622) do
     t.integer  "role"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "deleted",         :default => false, :null => false
   end
 
   create_table "phone_numbers", :force => true do |t|
@@ -175,6 +178,7 @@ ActiveRecord::Schema.define(:version => 20110919055622) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "deleted",             :default => false, :null => false
   end
 
   create_table "social_networks", :force => true do |t|
@@ -225,8 +229,8 @@ ActiveRecord::Schema.define(:version => 20110919055622) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                 :default => "",    :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -237,6 +241,7 @@ ActiveRecord::Schema.define(:version => 20110919055622) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "deleted",                               :default => false, :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

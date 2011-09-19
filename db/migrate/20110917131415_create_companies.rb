@@ -1,8 +1,8 @@
 class CreateCompanies < ActiveRecord::Migration
   def change
     create_table :companies do |t|
-      t.string :name
-      t.string :permalink
+      t.string :name, :null => false
+      t.string :permalink, :null => false
       t.string :domain
       t.text :description
       t.string :language,  :default => "en"

@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Immortal
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,9 +15,9 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
   attr_accessible :profile_attributes
   
-  has_many :owned_workspaces, :class_name => "Workspace", :foreign_key => "owner_id"
   has_many :members
-  has_many :joined_workspaces, :class_name => "Workspace", :through => :members, :source => :user_group
+  has_many :owned_workspaces, :foreign_key => 'owner_id',  :class_name => "Workspace" 
+  has_many :joined_workspaces, :through => :members, :source => :user_group, :source_type => "Workspace"
 
 
   #hooks
@@ -23,7 +25,9 @@ class User < ActiveRecord::Base
   
   
   def init_user
-    self.profile = Profile.find_or_create_by_email(self.email)
+    self.profile = Profile.with_deleted.find_or_create_by_email(self.email)
+    self.profile.deleted = false
+    self.profile.save
   end
   
   
@@ -45,5 +49,6 @@ end
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  deleted                :boolean(1)      default(FALSE), not null
 #
 

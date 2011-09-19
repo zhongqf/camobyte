@@ -1,4 +1,5 @@
 class TaskList < ActiveRecord::Base
+  include Immortal
 end
 # == Schema Information
 #

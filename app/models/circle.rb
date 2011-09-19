@@ -1,4 +1,5 @@
 class Circle < ActiveRecord::Base
+  include Immortal
 end
 # == Schema Information
 #

@@ -24,5 +24,6 @@ end
 #  avatar_content_type :string(255)
 #  avatar_file_size    :integer(4)
 #  avatar_updated_at   :datetime
+#  deleted             :boolean(1)      default(FALSE), not null
 #
 

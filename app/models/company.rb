@@ -1,4 +1,5 @@
 class Company < ActiveRecord::Base
+  include Immortal
 end
 # == Schema Information
 #
