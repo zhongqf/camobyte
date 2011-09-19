@@ -50,6 +50,7 @@ gem 'paperclip', '~> 2.3.6'
 gem "will_paginate", :git=>"git://github.com/mislav/will_paginate.git", :branch=>"rails3"
 gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
 gem 'sass-rails', "~> 3.1.0"
+gem 'immortal', :git => 'git://github.com/teambox/immortal.git'
 
 group :development do
   gem 'rails-footnotes', :git => "git://github.com/zhongqf/rails-footnotes.git"
