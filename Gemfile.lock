@@ -37,6 +37,13 @@ GIT
       hashie (>= 0.4.0)
 
 GIT
+  remote: git://github.com/teambox/immortal.git
+  revision: 786fe83d192d101646261f4e699f78a30e57445e
+  specs:
+    immortal (0.1.6)
+      activerecord (= 3.1.0)
+
+GIT
   remote: git://github.com/zhongqf/rails-footnotes.git
   revision: 065a47a29b290b3e476222218568a0fd144efa63
   specs:
@@ -360,6 +367,7 @@ DEPENDENCIES
   guard-spork
   haml (~> 3.1.3)
   haml-rails
+  immortal!
   jquery-rails
   launchy
   mysql2
