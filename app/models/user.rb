@@ -8,10 +8,17 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
   
+  #associations
   has_one :profile
   accepts_nested_attributes_for :profile
   attr_accessible :profile_attributes
   
+  has_many :owned_workspaces, :class_name => "Workspace", :foreign_key => "owner_id"
+  has_many :members
+  has_many :joined_workspaces, :class_name => "Workspace", :through => :members, :source => :user_group
+
+
+  #hooks
   before_create :init_user
   
   

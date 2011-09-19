@@ -9,8 +9,8 @@ end
 #
 #  id              :integer(4)      not null, primary key
 #  user_id         :integer(4)
-#  target_id       :integer(4)
-#  target_type     :string(255)
+#  user_group_id   :integer(4)
+#  user_group_type :string(255)
 #  role            :integer(4)
 #  email           :string(255)
 #  invited_user_id :integer(4)

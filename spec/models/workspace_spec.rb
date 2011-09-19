@@ -22,15 +22,16 @@ describe Workspace do
   
     it { should validate_presence_of(:owner) }
     it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:permalink) }
     it { should ensure_length_of(:name).is_at_least(4).is_at_most(20) }
     it { should ensure_length_of(:permalink).is_at_least(6).is_at_most(20) }
   end
 
   describe "create a workspace" do
     before do
-      @owner = Factory(:user)
-      @other = Factory(:user)
-      @workspace = Factory(:workspace, :owner_id => @owner.id)
+      @owner = FactoryGirl.create(:user)
+      @other = FactoryGirl.create(:user)
+      @workspace = FactoryGirl.create(:workspace, :owner_id => @owner.id)
     end
 
     it "should belong to its owner" do
@@ -38,12 +39,15 @@ describe Workspace do
       @workspace.owner?(@owner).should be_true
       @workspace.owner?(@other).should be_false
       @owner.reload   #why reload?
-      @owner.workspaces.should include(@workspace)
+      @owner.owned_workspaces.should include(@workspace)
+
     end
 
     it "should include only owner into members" do
       @workspace.users.should include(@owner)
       @workspace.users.count.should == 1
+      @owner.reload
+      @owner.joined_workspaces.should include(@workspace)
     end
 
     it "should fail if name or permalink was used" do

@@ -1,10 +1,59 @@
 class Workspace < ActiveRecord::Base
+  # associations
   belongs_to :owner, :class_name => "User"
-  has_many :members, :as => :user_group
-  has_many :users, :through => :members
+  belongs_to :organization
 
-  has_many :task_lists
+  with_options :dependent => :delete_all do |d|
+
+    d.with_options :as => :user_group do |asug|
   
+      asug.has_many :members
+      asug.has_many :invitations
+
+      asug.with_options :order => "id DESC" do |o|
+        o.has_many :conversations
+        o.has_many :comments
+        o.has_many :activities
+      end
+
+    end
+
+    d.has_many :task_lists
+    d.has_many :tasks
+  end
+
+  has_many :users, :through => :members, :source => :user
+
+  #validations
+  validates :owner, :presence => true
+  validates :name, :presence => true, :uniqueness => true, :length => {:within => 4..20}
+  validates :permalink, :presence => true, :uniqueness => true, :length => {:within => 6..20}
+
+  #hooks
+  after_create :add_owner_and_log_create
+
+
+  #methods
+
+  def owner?(user)
+    self.owner && self.owner == user
+  end
+
+  def add_user(user)
+    unless has_member?(user) 
+
+    end
+  end
+
+  def has_member?(user)
+    user && members.exists?(:user_id => user.id)
+  end
+
+  protected
+    def add_owner_and_log_create
+      add_user(owner, :role => :owner )
+      log_activities(self, 'create', user_id)
+    end
 
 end
 # == Schema Information

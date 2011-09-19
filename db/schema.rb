@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110917134325) do
+ActiveRecord::Schema.define(:version => 20110919055622) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -60,9 +60,11 @@ ActiveRecord::Schema.define(:version => 20110917134325) do
     t.text     "body"
     t.text     "body_html"
     t.integer  "status"
-    t.boolean  "deleted",     :default => false, :null => false
+    t.boolean  "deleted",         :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_group_id"
+    t.string   "user_group_type"
   end
 
   create_table "companies", :force => true do |t|
@@ -110,8 +112,8 @@ ActiveRecord::Schema.define(:version => 20110917134325) do
 
   create_table "invitations", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "target_id"
-    t.string   "target_type"
+    t.integer  "user_group_id"
+    t.string   "user_group_type"
     t.integer  "role"
     t.string   "email"
     t.integer  "invited_user_id"
