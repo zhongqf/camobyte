@@ -8,3 +8,13 @@ class EmailAddress < ActiveRecord::Base
   end
 
 end
+# == Schema Information
+#
+# Table name: email_addresses
+#
+#  id           :integer(4)      not null, primary key
+#  profile_id   :integer(4)
+#  value        :string(255)
+#  account_type :integer(4)      default(0)
+#
+
