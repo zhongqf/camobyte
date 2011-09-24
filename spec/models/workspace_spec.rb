@@ -50,6 +50,14 @@ describe Workspace do
       @owner.joined_workspaces.should include(@workspace)
     end
 
+    it "should be logged" do
+      Activity.last.user_group.should == @workspace
+      Activity.last.target.should == @workspace
+      Activity.last.user.should == @owner
+      Activity.last.action.should == "create"
+      Activity.last.comment_target.should == nil
+    end
+
     it "should fail if name or permalink was used" do
       FactoryGirl.build(:workspace, :name => @workspace.name).should be_invalid
       FactoryGirl.build(:workspace, :permalink => @workspace.permalink).should be_invalid
@@ -68,41 +76,151 @@ describe Workspace do
   end
 
   describe "invite member" do
-    it "should add users only once"
+    before do
+      @owner = FactoryGirl.create(:user)
+      @workspace = FactoryGirl.create(:workspace, :owner_id => @owner.id)
+      @user = FactoryGirl.create(:user)
+    end
+
+    it "should add users only once" do
+      member = @workspace.add_user(@user)
+      member.user.should == @user
+      member.user_group.should == @workspace
+      @workspace.should have(2).users
+      lambda { @workspace.add_user(@user) }.should_not change(@workspace, :users)
+      lambda { @workspace.add_user(@user, :source_user => @owenr) }.should_not change(@workspace, :users)
+    end
   
     describe "add user without being invited" do
-      it "should be logged"
-      it "should be member immediately"
-      it "should has the workspace in their workspaces"
+      before do
+        @member = @workspace.add_user(@user)
+      end
+
+      it "should be logged" do
+        Activity.last.user_group.should == @workspace
+        Activity.last.comment_target.should == nil
+        Activity.last.target.should == @member
+        Activity.last.user.should == @user
+        Activity.last.action.should == "create"
+        @member.reload.source_user.should == nil
+      end
+
+      it "should be member immediately" do
+        @workspace.users.should include(@user)
+      end
+
+      it "should has the workspace in their workspaces" do
+        @user.reload
+        @user.joined_workspaces.should include(@workspace)
+      end
+      
       it "should not be recent workspaces until making some stuff"
     end
 
     describe "add user with be invited" do
-      it "should be logged"
-      it "should not be member until invitation accepted"
+      before do
+        @member = @workspace.add_user(@user, :source_user => @owner)
+      end
+
+      it "should be logged" do
+        Activity.last.user_group.should == @workspace
+        Activity.last.comment_target.should == nil
+        Activity.last.target.should == @member
+        Activity.last.user.should == @user
+        Activity.last.action.should == "create"
+        @member.reload.source_user.should == @owner
+      end
     end
   
     describe "pre-invite users on project creation" do
-      it "should create multi-invitations"
-      it "should not invite same user twice" 
-      it "should not invite a non-exiting user" 
+      before do
+        @owner = FactoryGirl.create(:user)
+        @user1 = FactoryGirl.create(:user)
+        @user2 = FactoryGirl.create(:user)
+        @user3 = FactoryGirl.create(:user)
+
+        @workspace = FactoryGirl.create(:workspace, :owner_id => @owner.id, 
+          :invite_users => [@user1.id, @user2.id],
+          :invite_emails => "#{@user2.email} #{@user3.email} sampleuser@email.com" )
+      end
+      it "should create multi-invitations" do
+        @workspace.should have(4).invitations
+      end
+
+      it "should not invite same user twice" do
+        to_user2 = @workspace.invitations.select { |i| i.email == @user2.email  }
+        to_user2.size.should == 1
+      end
+
+      it "should invite a non-exiting user" do
+        to_sampleuser = @workspace.invitations.find_by_email 'sampleuser@email.com'
+        to_sampleuser.invited_user.should be_nil
+      end
     end
   end
 
   describe "dismiss member" do
-    it "should only dismiss members"
-    it "should dismiss members only once"
-    it "should not be member when dismissed."
-    it "should be logged as lefting workspace when dismissed." 
-    it "should remove the workspace from their workspaces and recent workspaces" 
+    before do
+      @owner = FactoryGirl.create(:user)
+      @workspace = FactoryGirl.create(:workspace, :owner_id => @owner.id)
+      @user = FactoryGirl.create(:user)
+      @member = @workspace.add_user(@user)
+      @non_member = FactoryGirl.create(:user)
+    end
+
+    it "should only dismiss members" do
+      @workspace.should have(2).users
+      @workspace.reload
+      @workspace.remove_user(@user)
+      @workspace.should have(1).users
+      @workspace.users.should_not include(@user)
+      @workspace.users.should_not include(@non_member)
+      @workspace.remove_user(@non_member)
+      @workspace.should have(1).users
+      
+      @user.reload
+      @user.joined_workspaces.should_not include(@workspace)
+    end
+
+    it "should dismiss members only once" do
+      @workspace.remove_user(@user)
+      @workspace.remove_user(@user)
+      @workspace.should have(1).user
+      @workspace.users.should_not include(@user)
+    end
+
+    it "should be logged as lefting workspace when dismissed." do
+      @workspace.remove_user(@user)
+      Activity.last.user_group.should == @workspace
+      Activity.last.comment_target.should == nil
+      Activity.last.target.should == @member
+      Activity.last.action.should == 'delete'
+      Activity.last.user.should == @user
+    end
+
   end
 
   describe "transfer ownership" do
-    it "should transfer ownership from owner"
-    it "should transfer ownership to an admin"
-    it "should not transfer ownership to a member" 
-    it "should not transfer ownership to a non-member"
-    it "should not transfer ownership to a non-existing user"
+    before do
+      @owner = FactoryGirl.create(:user)
+      @workspace = FactoryGirl.create(:workspace, :owner_id => @owner.id)
+      @user = FactoryGirl.create(:user)
+    end
+
+    it "should transfer ownership to an admin" do
+      @member = @workspace.add_user(@user, :role => Member::ROLES[:admin])
+      @member.admin?.should be_true
+      @workspace.admin?(@user).should be_true
+      @workspace.transfer_to(@member)
+      @workspace.owner.should == @user
+    end
+
+    it "should not transfer ownership to a member" do
+      @member = @workspace.add_user(@user)
+      @workspace.transfer_to(@member)
+      @workspace.owner.should == @owner
+    end
+
   end
 
   describe "add task list" do
@@ -114,17 +232,11 @@ describe Workspace do
   end
 
   describe "#destroy" do
-  end
+    before do
+      @workspace = FactoryGirl.create(:workspace)
+    end
 
-  describe "role and privileges" do
-
-    it "should allow only owner to delete workspace"
-    it "should allow only admin to edit workspace"
-    it "should allow only admin to archive workspace"
-    it "should allow only admin to invite members"
-    it "should allow only member to create task and tasklist"
-    it "should be notified to watchers when workspace updated"
-
+    it "should delete associated stuffs"
   end
 
 end

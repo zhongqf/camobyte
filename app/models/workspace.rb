@@ -1,3 +1,5 @@
+require_dependency 'extract_emails'
+
 class Workspace < ActiveRecord::Base
   include Immortal
 
@@ -33,12 +35,23 @@ class Workspace < ActiveRecord::Base
 
   #hooks
   after_create :add_owner_and_log_create
+  after_create :send_invitations!, :if => :invite_members?
+  
+   
+
+  #accessor
+  attr_accessor :invite_users, :invite_emails
 
 
   #methods
 
   def owner?(user)
     self.owner && self.owner == user
+  end
+
+  def admin?(user)
+    member = self.members.find_by_user_id(user.id)
+    member.admin?
   end
 
   def add_user(user, params = {})
@@ -56,14 +69,55 @@ class Workspace < ActiveRecord::Base
     user && members.exists?(:user_id => user.id)
   end
 
-  def log_activities(target, action, user = nil)
+  def remove_user(user)
+    members.find_by_user_id(user.id).try(:destroy)
+  end
 
+  def transfer_to(member)
+    if member.admin?
+      self.owner = member.user
+      self.save
+    end
+  end
+
+
+  def log_activity(target, action, user = nil)
+    Activity.log(self, target, action, user || target.user)
+  end
+
+ 
+  def create_invitation(user, params)
+    self.invitations.new(params).tap do |invitation|
+      invitation.user = user
+      invitation.save
+    end
   end
 
   protected
+
+    def invite_members?
+      invite_users.present? or invite_emails.present?
+    end
+
+    def send_invitations!
+      return unless invite_members?
+      users_to_invite = User.find(Array.wrap invite_users)
+      emails_to_invite = invite_emails.to_s.extract_emails - users_to_invite.map(&:email)
+
+      users_to_invite.each do |user| 
+        create_invitation(self.owner, :invited_user => user) 
+      end
+      
+      emails_to_invite.each do |email| 
+        create_invitation(self.owner, :email => email) 
+      end
+
+    end
+
+
     def add_owner_and_log_create
       add_user(owner, :role => :owner )
-      log_activities(self, 'create', owner_id)
+      log_activity(self, 'create', owner)
     end
 
 end
