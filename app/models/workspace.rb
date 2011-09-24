@@ -36,6 +36,10 @@ class Workspace < ActiveRecord::Base
   #hooks
   after_create :add_owner_and_log_create
   after_create :send_invitations!, :if => :invite_members?
+
+  #scopes
+  scope :archived, where(:archived => true)
+  scope :unarchived, where(:archived => false)
   
    
 
@@ -78,6 +82,10 @@ class Workspace < ActiveRecord::Base
       self.owner = member.user
       self.save
     end
+  end
+
+  def archive!
+    update_attribute(:archived, true)
   end
 
 

@@ -1,5 +1,7 @@
 class Person < ActiveRecord::Base
   include Immortal
+
+  ROLES = {:root => 0, :admin => 1, :manager => 2, :employee => 3 }
 end
 # == Schema Information
 #
