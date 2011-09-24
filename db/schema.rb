@@ -40,12 +40,12 @@ ActiveRecord::Schema.define(:version => 20110919073344) do
   create_table "circles", :force => true do |t|
     t.integer  "company_id"
     t.integer  "owner_id"
-    t.string   "name"
-    t.string   "permalink"
+    t.string   "name",                                    :null => false
+    t.string   "permalink",                               :null => false
     t.integer  "last_comment_id"
-    t.integer  "comments_count",       :default => 0
+    t.integer  "comments_count",       :default => 0,     :null => false
     t.string   "watchers_ids"
-    t.integer  "conversations_count",  :default => 0
+    t.integer  "conversations_count",  :default => 0,     :null => false
     t.integer  "last_conversation_id"
     t.boolean  "public"
     t.boolean  "deleted",              :default => false, :null => false
@@ -60,16 +60,14 @@ ActiveRecord::Schema.define(:version => 20110919073344) do
     t.text     "body"
     t.text     "body_html"
     t.integer  "status"
-    t.boolean  "deleted",         :default => false, :null => false
+    t.boolean  "deleted",     :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_group_id"
-    t.string   "user_group_type"
   end
 
   create_table "companies", :force => true do |t|
-    t.string   "name"
-    t.string   "permalink"
+    t.string   "name",                                                        :null => false
+    t.string   "permalink",                                                   :null => false
     t.string   "domain"
     t.text     "description"
     t.string   "language",          :default => "en"
@@ -89,7 +87,7 @@ ActiveRecord::Schema.define(:version => 20110919073344) do
     t.integer  "user_id"
     t.string   "title"
     t.integer  "last_comment_id"
-    t.integer  "comments_count",  :default => 0
+    t.integer  "comments_count",  :default => 0,     :null => false
     t.string   "watchers_ids"
     t.boolean  "simple",          :default => false
     t.boolean  "deleted",         :default => false, :null => false
@@ -112,8 +110,8 @@ ActiveRecord::Schema.define(:version => 20110919073344) do
 
   create_table "invitations", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "user_group_id"
-    t.string   "user_group_type"
+    t.integer  "target_id"
+    t.string   "target_type"
     t.integer  "role"
     t.string   "email"
     t.integer  "invited_user_id"
@@ -130,14 +128,12 @@ ActiveRecord::Schema.define(:version => 20110919073344) do
     t.integer  "role"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "deleted",         :default => false, :null => false
-    t.integer  "source_user_id"
   end
 
   create_table "organizations", :force => true do |t|
     t.integer  "company_id"
-    t.string   "name"
-    t.string   "permalink"
+    t.string   "name",                           :null => false
+    t.string   "permalink",                      :null => false
     t.text     "description"
     t.string   "domain"
     t.text     "settings"
@@ -152,7 +148,6 @@ ActiveRecord::Schema.define(:version => 20110919073344) do
     t.integer  "role"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "deleted",         :default => false, :null => false
   end
 
   create_table "phone_numbers", :force => true do |t|
@@ -191,14 +186,14 @@ ActiveRecord::Schema.define(:version => 20110919073344) do
   create_table "task_lists", :force => true do |t|
     t.integer  "workspace_id"
     t.integer  "user_id"
-    t.string   "name"
+    t.string   "name",                                    :null => false
     t.integer  "position"
     t.integer  "last_comment_id"
-    t.integer  "comments_count",       :default => 0
+    t.integer  "comments_count",       :default => 0,     :null => false
     t.string   "watchers_ids"
     t.boolean  "archived",             :default => false
-    t.integer  "archived_tasks_count", :default => 0
-    t.integer  "tasks_count",          :default => 0
+    t.integer  "archived_tasks_count", :default => 0,     :null => false
+    t.integer  "tasks_count",          :default => 0,     :null => false
     t.datetime "completed_at"
     t.date     "start_on"
     t.date     "finish_on"
@@ -212,16 +207,16 @@ ActiveRecord::Schema.define(:version => 20110919073344) do
     t.integer  "user_id"
     t.integer  "task_list_id"
     t.integer  "parent_id"
-    t.string   "name"
+    t.string   "name",                               :null => false
     t.integer  "position"
-    t.integer  "comments_count",  :default => 0
+    t.integer  "comments_count",  :default => 0,     :null => false
     t.integer  "last_comment_id"
     t.string   "watchers_ids"
     t.integer  "status"
     t.date     "due_on"
     t.datetime "completed_at"
     t.boolean  "deleted",         :default => false, :null => false
-    t.integer  "subtasks_count",  :default => 0
+    t.integer  "subtasks_count",  :default => 0,     :null => false
     t.integer  "last_subtask_id"
     t.string   "assignee_ids"
     t.datetime "created_at"
@@ -256,15 +251,15 @@ ActiveRecord::Schema.define(:version => 20110919073344) do
   create_table "workspaces", :force => true do |t|
     t.integer  "organization_id"
     t.integer  "owner_id"
-    t.string   "name"
-    t.string   "permalink"
+    t.string   "name",                                    :null => false
+    t.string   "permalink",                               :null => false
     t.integer  "last_comment_id"
-    t.integer  "comments_count",       :default => 0
-    t.integer  "members_count",        :default => 0
+    t.integer  "comments_count",       :default => 0,     :null => false
+    t.integer  "members_count",        :default => 0,     :null => false
     t.string   "watchers_ids"
-    t.integer  "tasks_count",          :default => 0
-    t.integer  "task_lists_count",     :default => 0
-    t.integer  "conversations_count",  :default => 0
+    t.integer  "tasks_count",          :default => 0,     :null => false
+    t.integer  "task_lists_count",     :default => 0,     :null => false
+    t.integer  "conversations_count",  :default => 0,     :null => false
     t.integer  "last_conversation_id"
     t.boolean  "track_time",           :default => false
     t.boolean  "archived",             :default => false
