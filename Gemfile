@@ -62,11 +62,13 @@ group :development do
 end
 
 group :test, :development do 
-  gem "capybara"
   gem 'pry'
 
+  #gem "capybara"
+  #gem "rspec-rails", "~> 2.6.1"
+  gem "steak", "~> 2.0.0"
+
   gem "cucumber-rails"
-  gem "rspec-rails", "~> 2.6.1"
   gem "factory_girl_rails", "~> 1.2.0"
   
   gem 'database_cleaner'

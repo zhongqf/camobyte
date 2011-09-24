@@ -19,7 +19,7 @@ guard 'spork', :cucumber => false, :rspec_env => { 'RAILS_ENV' => 'test' }, :wai
   watch('spec/spec_helper.rb')
 end
 
-guard 'rspec', :version => 2, :all_after_pass => false, :cli => '-f Fuubar --drb', :all_on_start => false  do
+guard 'rspec', :version => 2, :all_after_pass => false, :cli => '-f Fuubar --drb', :all_on_start => false, :keep_failed => false do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
