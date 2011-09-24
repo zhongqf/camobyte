@@ -1,9 +1,16 @@
 Camobyte::Application.routes.draw do
 
+
   match '/auth/:provider/callback', :to => 'sessions#callback'
 
   devise_for :users
   resources :users
+  
+  resources :workspaces do
+    
+  end
+  match '/my_workspaces' => 'workspaces#list', :as => :all_workspaces
+
   
   match '/account/settings' => 'users#edit', :as => :account_settings, :sub_action => 'settings'
   match '/account/picture' => 'users#edit', :as => :account_picture, :sub_action => 'picture'

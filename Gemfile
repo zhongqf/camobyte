@@ -51,6 +51,7 @@ gem "will_paginate", :git=>"git://github.com/mislav/will_paginate.git", :branch=
 gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
 gem 'sass-rails', "~> 3.1.0"
 gem 'immortal', :git => 'git://github.com/teambox/immortal.git'
+gem "inherited_resources", "~> 1.3.0"
 
 group :development do
   gem 'rails-footnotes', :git => "git://github.com/zhongqf/rails-footnotes.git"
@@ -84,8 +85,8 @@ group :test, :development do
   gem "guard-cucumber"
   gem "guard-migrate"
   gem 'rb-fsevent'
-  gem 'growl_notify'
-  #gem 'growl'
+  #gem 'growl_notify'
+  gem 'growl'
 end
 
 
