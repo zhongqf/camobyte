@@ -34,29 +34,29 @@ gem 'mysql2'
 # group :development, :test do
 #   gem 'webrat'
 # end
-gem "devise","~> 1.4.3"
-gem "slim", "~> 1.0.2"
-gem "haml", "~> 3.1.3"
+gem "devise"
+gem "slim"
+gem "haml"
 
 #gem "jammit"
 gem "jquery-rails"
 gem 'choices', :git => "git://github.com/teambox/choices.git"
-gem "omniauth", "~> 0.2.0"
+gem "omniauth"
 gem 'show_for'
 gem 'simple_form', :git => "git://github.com/plataformatec/simple_form.git"
 gem 'sass'
-gem 'cancan', '~> 1.4.1'
-gem 'paperclip', '~> 2.3.6'
+gem 'cancan'
+gem 'paperclip'
 gem "will_paginate", :git=>"git://github.com/mislav/will_paginate.git", :branch=>"rails3"
 gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
-gem 'sass-rails', "~> 3.1.0"
+gem 'sass-rails'
 gem 'immortal', :git => 'git://github.com/teambox/immortal.git'
-gem "inherited_resources", "~> 1.3.0"
+gem "inherited_resources"
 
 group :development do
   gem 'rails-footnotes', :git => "git://github.com/zhongqf/rails-footnotes.git"
   gem "haml-rails"
-  gem "slim-rails", "~> 0.2.1"
+  gem "slim-rails"
   gem "rails3-generators", :git => "git://github.com/zhongqf/rails3-generators.git"
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 end
@@ -65,12 +65,11 @@ group :test, :development do
   gem 'pry'
 
   #gem "capybara"
-  #gem "rspec-rails", "~> 2.6.1"
-  gem "steak", "~> 2.0.0"
+  #gem "rspec-rails"
+  gem "steak"
 
   gem "cucumber-rails"
-  gem "factory_girl_rails", "~> 1.2.0"
-  
+  gem "factory_girl_rails"
   gem 'database_cleaner'
   gem 'fuubar'
   gem 'timecop'
@@ -78,8 +77,8 @@ group :test, :development do
   gem 'rcov'
   gem 'pickle'
   gem 'launchy'
-  gem 'spork', '~> 0.9.0.rc'
-  gem 'shoulda-matchers', '~> 1.0.0.beta3'
+  gem 'spork'
+  gem 'shoulda-matchers'
 
   gem 'guard-spork'
   gem "guard-bundler"
@@ -87,7 +86,6 @@ group :test, :development do
   gem "guard-cucumber"
   gem "guard-migrate"
   gem 'rb-fsevent'
-  #gem 'growl_notify'
   gem 'growl'
 end
 
