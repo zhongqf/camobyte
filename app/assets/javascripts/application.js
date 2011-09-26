@@ -24,6 +24,8 @@ $(".add_nested_item").click(function(){
 
 });
 
+$("input[type=submit],input[type=button]").addClass("btn");
+
  /* ".add_nested_item:click": function(e){
     link = $(this);
     template = eval(link.href.replace(/.*#/, ''))

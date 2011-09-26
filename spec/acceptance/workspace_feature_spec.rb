@@ -10,7 +10,6 @@ feature 'Creating a workspace' do
   scenario 'should be error when workspace name is invalid' do
     page.should have_content("Create a workspace")
     fill_in "Workspace name", :with => "ab"
-    
     click_button "Create workspace"
     page.should have_content("is too short")
   end
