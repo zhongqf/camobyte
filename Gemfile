@@ -77,7 +77,7 @@ group :test, :development do
   gem 'rcov'
   gem 'pickle'
   gem 'launchy'
-  gem 'spork'
+  gem 'spork', '>= 0.9.0.rc9'
   gem 'shoulda-matchers'
 
   gem 'guard-spork'

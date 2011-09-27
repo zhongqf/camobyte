@@ -12,6 +12,11 @@ feature 'Creating a workspace' do
     fill_in "Workspace name", :with => "ab"
     click_button "Create workspace"
     page.should have_content("is too short")
+
+    fill_in "Workspace name", :with => ""
+    click_button "Create workspace"
+    save_and_open_page
+    page.should have_content("can not be blank")
   end
 
 end
