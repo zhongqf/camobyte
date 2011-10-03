@@ -8,6 +8,11 @@ module HelperMethods
     click_button "Sign In"
   end  
 
+  def login
+    user = FactoryGirl.create(:user)
+    login_as(user)
+  end
+
 end
 
 RSpec.configuration.include HelperMethods, :type => :acceptance
